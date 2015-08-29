@@ -1,6 +1,10 @@
 ZERO TABLE
 ==========
 
+[![Build Status](https://drone.io/github.com/gsouf/zero-table/status.png)](https://drone.io/github.com/gsouf/zero-table/latest)
+[![Code Climate](https://codeclimate.com/github/gsouf/zero-table/badges/gpa.svg)](https://codeclimate.com/github/gsouf/zero-table)
+[![Test Coverage](https://codeclimate.com/github/gsouf/zero-table/badges/coverage.svg)](https://codeclimate.com/github/gsouf/zero-table/coverage)
+
 A modular javascript grid library.
 
 It is a work in progress, I pulbish it now as an alpha version because it is already working and powerful, but some features are not implemented, 
@@ -36,11 +40,10 @@ Quick Start
 ZeroTable was built to be super configurable. But some default options are provided to allow quick start with the library
 
 
-
 As a starting point, you want to include ``jquery``, and the files ``build/zerotable.min.js`` and ``build/zerotable.min.css``.
 
 
-The following sample will give youthe most basic example of the library :
+The following sample will give you the most basic example of the library :
 
 ```html
 
@@ -128,3 +131,9 @@ If you want to contribute here are the steps to build the library :
 ```
 
 The files are generated in the directory ``build``
+
+
+Like it ?
+---------
+
+[![endorse](https://api.coderwall.com/souf/endorsecount.png)](https://coderwall.com/souf)
