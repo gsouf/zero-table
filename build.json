@@ -1,0 +1,48 @@
+{
+
+  "javascript": [
+
+    "src/ZeroTable.js",
+
+    "src/ZeroTable/extendClass.js",
+    "src/ZeroTable/clone.js",
+    "src/ZeroTable/extend.js",
+    "src/ZeroTable/foreach.js",
+    "src/ZeroTable/createPlugin.js",
+    "src/ZeroTable/registerPlugin.js",
+    "src/ZeroTable/loadPlugin.js",
+
+    "src/ZeroTable/Bindable.js",
+    "src/ZeroTable/Bindable/Event.js",
+
+    "src/ZeroTable/DataConnector.js",
+    "src/ZeroTable/Data/DataAdapter.js",
+    "src/ZeroTable/Data/DataArray.js",
+
+    "src/ZeroTable/Table.js",
+    "src/ZeroTable/TableInstance.js",
+    "src/ZeroTable/TableEvent.js",
+
+    "src/ZeroTable/Column/Definition.js",
+    "src/ZeroTable/Column/Cell.js",
+
+    "src/ZeroTable/Drawer/NoTable.js",
+
+    "src/ZeroTable/StringRenderParser.js",
+
+    "src/ZeroTable/Plugin.js",
+
+    "src/ZeroTable/Plugin/SearchHeader/SearcherFactory.js",
+    "src/ZeroTable/Plugin/SearchHeader/Searcher.js",
+    "src/ZeroTable/Plugin/SearchHeader/String.js",
+
+    "src/plugins/*"
+
+
+  ],
+
+  "sass": [
+    "style/style.scss"
+  ]
+
+}

@@ -1,0 +1,251 @@
+@mixin zt-placeholder {
+  &::-webkit-input-placeholder {@content}
+  &:-moz-placeholder           {@content}
+  &::-moz-placeholder          {@content}
+  &:-ms-input-placeholder      {@content}
+}
+
+.zt-scroller{
+
+  height: 100%;
+  overflow-x: auto;
+
+}
+
+.zt-wrapper {
+
+  height: 100%;
+  font-size: 11px;
+  position: relative;
+
+  .zt-loading{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    background: rgba(0,0,0,0.1);
+
+    .zt-loading-spinner{
+      margin: auto;
+      width: 48px;
+      height: 48px;
+      background: url('./images/zero-table/loading.gif');
+      margin-top: 80px;
+    }
+
+  }
+
+  .zt-table-header {
+    font-size: 12px;
+    border-bottom: 2px solid #EDEDED;
+
+    >div{
+      white-space: nowrap;
+    }
+
+
+    .zt-header-main{
+      height: 28px;
+      color:#666;
+      background: #F5F5F5;
+      border-bottom: 1px solid #CBCBCB;;
+
+      .zt-header-col {
+        font-weight: bold;
+        display: inline-block;
+        cursor: default;
+        padding: 6px 9px;
+        position: relative;
+        box-sizing: border-box;
+
+        .zt-header-col-order{
+          position: absolute;
+          left: 0;
+          width:24px;
+          top: 2px;
+          bottom: 0;
+          background-position: center center;
+          background-repeat: no-repeat;
+          display: none;
+        }
+
+        &.zt-column-ordered{
+          .zt-header-col-title{
+            margin-left: 16px;
+          }
+        }
+
+        &.zt-column-ordered.zt-column-order-asc{
+          .zt-header-col-order{
+            display: block;
+            background: url("images/zero-table/order_asc.png");
+          }
+        }
+        &.zt-column-ordered.zt-column-order-desc{
+          .zt-header-col-order{
+            display: block;
+            background: url("images/zero-table/order_desc.png");
+          }
+        }
+
+        &.zt-header-col-orderable:hover {
+          background: #D9EDCD;
+          transition: background 350ms;
+        }
+      }
+
+    }
+
+    .zt-searchers{
+      height: 25px;
+      background: #FFF;
+
+      .zt-header-col{
+        display: inline-block;
+        padding:0;
+        box-sizing: border-box;
+
+        position: relative;
+
+        .zt-input-wrapper {
+
+          position: absolute;
+          top: 2px;
+          bottom: 2px;
+          left: 2px;
+          right: 2px;
+
+          input {
+
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+            border-radius: 2px;
+            border: 1px solid #DDD;
+            text-indent: 2px;
+
+            @include zt-placeholder {
+              font-style: italic;
+              color: #DDD;
+              font-weight: 100;
+              font-size: 11px;
+            }
+
+          }
+        }
+
+      }
+
+    }
+
+    .zt-header-col {
+      vertical-align: middle;
+      border: 1px solid #CBCBCB;
+      height:100%;
+    }
+
+  }
+
+  .zt-table-wrapper {
+
+    overflow-y: auto;
+    overflow-x: visible;
+
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    .zt-table-table {
+      height: 100%;
+    }
+
+  }
+
+  .zt-table-table {
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+
+    .zt-table-tbody {
+      display: block;
+    }
+
+    .zt-table-tr {
+      list-style: none;
+      display: block;
+      white-space: nowrap;
+      margin: 0;
+      padding: 0;
+      cursor: default;
+      height: 20px;
+      border-bottom: 1px solid #F1F1F1;
+
+
+      &:hover{
+        background: #F5F5F5;
+      }
+
+      &.zt-selected {
+        background: #DCEFDA;
+        transition: background 200ms;
+      }
+
+      &.zt-selected:hover {
+        background: #C7E0C5;
+        transition: background 120ms;
+      }
+
+
+
+      .zt-table-td {
+        vertical-align: middle;
+        display: inline-block;
+        margin: 0;
+        padding: 2px;
+        border-right: 1px solid #F1F1F1;
+
+
+        height:100%;
+        box-sizing: border-box;
+
+        white-space: nowrap;
+        overflow: hidden;              /* "overflow" value must be different from  visible"*/
+        -o-text-overflow: ellipsis;    /* Opera < 11*/
+        text-overflow:    ellipsis;    /* IE, Safari (WebKit), Opera >= 11, FF > 6 */
+
+        &:first-child{
+          border-left: 1px solid #F1F1F1;
+        }
+
+      }
+      &:last-child .zt-table-td {
+        border-bottom: none;
+      }
+
+      .zt-table-td-fill{
+        width: 100%;
+      }
+
+
+
+    }
+
+
+
+  }
+
+}
+
+.zt-unhighlightable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
