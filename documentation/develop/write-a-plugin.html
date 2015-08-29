@@ -1,0 +1,389 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Write a plugin | Zero Table Documentation</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.2.0">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-richquotes/plugin.css">
+        
+    
+    
+        <link rel="stylesheet" href="../style/website.css">
+    
+
+        
+    
+    
+    
+    <link rel="prev" href="../develop/plugins.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book" data-level="2.1.1" data-basepath=".." data-revision="Wed Aug 26 2015 11:16:45 GMT+0200 (CEST)">
+    
+
+<div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="Type to search" class="form-control" />
+    </div>
+    <ul class="summary">
+        
+        
+        
+        
+
+        
+
+        
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" >
+            
+            <span><b>1.</b> Configuration</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="configuration/first-steps.html">
+            
+                
+                    <a href="../configuration/first-steps.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        First Steps
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="configuration/library-basics.html">
+            
+                
+                    <a href="../configuration/library-basics.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        Library Basics
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="configuration/manage-plugins.html">
+            
+                
+                    <a href="../configuration/manage-plugins.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        Manage Plugins
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" >
+            
+            <span><b>2.</b> Developing</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="develop/plugins.html">
+            
+                
+                    <a href="../develop/plugins.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        Plugins
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="2.1.1" data-path="develop/write-a-plugin.html">
+            
+                
+                    <a href="../develop/write-a-plugin.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.1.</b>
+                        
+                        Write a plugin
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+        
+        <li class="divider"></li>
+        <li>
+            <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                Published with GitBook
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header">
+    <!-- Actions Left -->
+    <a href="#" class="btn pull-left toggle-summary" aria-label="Table of Contents"><i class="fa fa-align-justify"></i></a>
+    <a href="#" class="btn pull-left toggle-search" aria-label="Search"><i class="fa fa-search"></i></a>
+    
+    <div id="font-settings-wrapper" class="dropdown pull-left">
+        <a href="#" class="btn toggle-dropdown" aria-label="Font Settings"><i class="fa fa-font"></i>
+        </a>
+        <div class="dropdown-menu font-settings">
+    <div class="dropdown-caret">
+        <span class="caret-outer"></span>
+        <span class="caret-inner"></span>
+    </div>
+
+    <div class="buttons">
+        <button type="button" id="reduce-font-size" class="button size-2">A</button>
+        <button type="button" id="enlarge-font-size" class="button size-2">A</button>
+    </div>
+
+    <div class="buttons font-family-list">
+        <button type="button" data-font="0" class="button">Serif</button>
+        <button type="button" data-font="1" class="button">Sans</button>
+    </div>
+
+    <div class="buttons color-theme-list">
+        <button type="button" id="color-theme-preview-0" class="button size-3" data-theme="0">White</button>
+        <button type="button" id="color-theme-preview-1" class="button size-3" data-theme="1">Sepia</button>
+        <button type="button" id="color-theme-preview-2" class="button size-3" data-theme="2">Night</button>
+    </div>
+</div>
+
+    </div>
+
+    <!-- Actions Right -->
+    
+    <div class="dropdown pull-right">
+        <a href="#" class="btn toggle-dropdown" aria-label="Share"><i class="fa fa-share-alt"></i>
+        </a>
+        <div class="dropdown-menu font-settings dropdown-left">
+            <div class="dropdown-caret">
+                <span class="caret-outer"></span>
+                <span class="caret-inner"></span>
+            </div>
+            <div class="buttons">
+                <button type="button" data-sharing="twitter" class="button">
+                    Share on Twitter
+                </button>
+                <button type="button" data-sharing="google-plus" class="button">
+                    Share on Google
+                </button>
+                <button type="button" data-sharing="facebook" class="button">
+                    Share on Facebook
+                </button>
+                <button type="button" data-sharing="weibo" class="button">
+                    Share on Weibo
+                </button>
+                <button type="button" data-sharing="instapaper" class="button">
+                    Share on Instapaper
+                </button>
+            </div>
+        </div>
+    </div>
+    
+
+    
+    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Google"><i class="fa fa-google-plus"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
+    
+    
+    
+
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >Zero Table Documentation</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="write-your-first-plugin">Write your first plugin</h1>
+<p>Basically a plugin will catch events triggered by the table instance and mays
+modify the arguments attached to the event, listen at the user inputs, trigger new events,
+the plugin can also add some public methods to the table... let&apos;s see how to make it real.</p>
+<h2 id="plugin-structure">Plugin Structure</h2>
+<p>Every plugin should start with this structure :</p>
+<pre><code class="lang-js">    ZeroTable.createPlugin({
+        <span class="hljs-string">&quot;name&quot;</span> : <span class="hljs-string">&quot;namespace.name&quot;</span>,
+        <span class="hljs-string">&quot;defaultOptions&quot;</span> : {
+            <span class="hljs-string">&quot;someOption&quot;</span> : <span class="hljs-string">&quot;someValue&quot;</span>,
+            <span class="hljs-string">&quot;foo&quot;</span> : <span class="hljs-number">20</span>
+        },
+        <span class="hljs-string">&quot;optionOverrides&quot;</span> : {
+            <span class="hljs-string">&quot;someOption&quot;</span> : <span class="hljs-string">&quot;someOption&quot;</span>,
+            <span class="hljs-string">&quot;foo&quot;</span> : <span class="hljs-string">&quot;bar&quot;</span>
+        },
+        <span class="hljs-string">&quot;init&quot;</span> : <span class="hljs-literal">null</span>,
+        <span class="hljs-string">&quot;listen&quot;</span> : {},
+        <span class="hljs-string">&quot;pluginPrototype&quot;</span> : {},
+        <span class="hljs-string">&quot;tableKey&quot;</span> : {}
+    });
+</code></pre>
+<blockquote>
+<p>&quot;Ok, that sounds good but what does this mean ?&quot;</p>
+</blockquote>
+<p>When you call <code>ZeroTable.createPlugin</code> you define some options and functions to make
+your plugin worthy. Here is the meaning of the options</p>
+<h2 id="plugin-options">Plugin Options</h2>
+<ul>
+<li><strong>Name</strong></li>
+</ul>
+<p>Its the name used when you want to call the plugin. Example with the plugin named <code>namespace.name</code> :</p>
+<pre><code class="lang-js"><span class="hljs-comment">// This create an instance of the plugin</span>
+<span class="hljs-keyword">var</span> pluginInstance = ZeroTable.loadPlugin(<span class="hljs-string">&quot;namespace.name&quot;</span>);
+</code></pre>
+<ul>
+<li><strong>defaultOptions</strong></li>
+</ul>
+<p>Default options of the plugin :</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> pluginInstance = ZeroTable.loadPlugin(<span class="hljs-string">&quot;namespace.name&quot;</span>);
+<span class="hljs-built_in">console</span>.log(pluginInstance.getOption(<span class="hljs-string">&quot;someOption&quot;</span>));
+<span class="hljs-comment">// &gt; someValue</span>
+</code></pre>
+<ul>
+<li><strong>optionOverrides</strong></li>
+</ul>
+<p>That&apos;s the options you can override from the table instance and what option they match in the table instance.
+It can be tricky to understand how it works, the example will be much more concise :</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> pluginInstance = ZeroTable.loadPlugin(<span class="hljs-string">&quot;namespace.name&quot;</span>);
+<span class="hljs-keyword">var</span> tableInstance = <span class="hljs-keyword">new</span> ZeroTable.TableInstance({
+    <span class="hljs-string">&quot;someOption&quot;</span> : <span class="hljs-string">&quot;otherValue&quot;</span>,
+    <span class="hljs-string">&quot;foo&quot;</span> : <span class="hljs-number">0</span>,
+    <span class="hljs-string">&quot;bar&quot;</span> : <span class="hljs-number">10</span>
+});
+<span class="hljs-comment">// someOption override was set for the same name, there is no ambiguity</span>
+<span class="hljs-built_in">console</span>.log(pluginInstance.getOption(<span class="hljs-string">&quot;someOption&quot;</span>, tableInstance));
+<span class="hljs-comment">// &gt; otherValue</span>
+
+<span class="hljs-comment">// foo was overriden with the &quot;bar&quot; option, then it will search for the option &quot;bar&quot; instead of &quot;foo&quot; in the table options</span>
+<span class="hljs-comment">// that&apos;s actually useful to avoid conflict with other plugins that would use the same options name.</span>
+<span class="hljs-built_in">console</span>.log(pluginInstance.getOption(<span class="hljs-string">&quot;foo&quot;</span>, tableInstance));
+<span class="hljs-comment">// &gt; 10</span>
+</code></pre>
+<ul>
+<li><strong>optionOverrides</strong></li>
+</ul>
+<p>That&apos;s a callback function that is called at the plugin instantiation</p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../develop/plugins.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Plugins"><i class="fa fa-angle-left"></i></a>
+        
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-github/plugin.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-ga/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"fontSettings":{"theme":null,"family":"sans","size":2},"richquotes":{"todos":true},"github":{"url":"https://github.com/gsouf/zero-table"},"ga":{"token":"UA-XXXX-Y","configuration":"auto"}};
+    gitbook.start(config);
+});
+</script>
+
+        <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-XXXX-Y', 'auto');ga('send', 'pageview');</script>
+    </body>
+    
+</html>

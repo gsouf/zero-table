@@ -1,0 +1,28 @@
+{
+
+  "gitbook": ">=2.0.0",
+  "title": "Zero Table Documentation",
+  "description": "Zero Table is a very flexible javascript library to create and manipulate dynamic html grid.",
+  "language": "en",
+
+  "styles": {
+    "website": "style/website.css",
+    "ebook"  : "style/website.css",
+    "pdf"    : "style/website.css",
+    "mobi"   : "style/website.css",
+    "epub"   : "style/website.css"
+  },
+
+  "plugins"       : ["richquotes", "github", "ga"],
+  "pluginsConfig": {
+    "richquotes" : {
+      "todos" : true
+    },
+    "github": {
+      "url": "https://github.com/gsouf/zero-table"
+    },
+    "ga": {
+      "token": "UA-XXXX-Y"
+    }
+  }
+}

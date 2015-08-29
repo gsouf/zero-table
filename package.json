@@ -1,22 +1,12 @@
 {
-  "name": "zero-table",
-  "version": "0.0.1",
-  "devDependencies": {
-    "grunt": "~0.4.5",
-    "grunt-contrib-uglify": "~0.7.0",
-    "grunt-contrib-watch": "~0.6.1",
-    "grunt-contrib-sass" : "*",
-    "grunt-newer": "~0.6.1",
-
-
-    "karma" : "~0.12.0",
-    "karma-jasmine" : "~0.1.0",
-    "karma-chrome-launcher" : "~0.1.7",
-    "grunt-karma" : "*",
-    "karma-coverage": "~0.1",
-    "karma-phantomjs-launcher": "~0.1",
-    "grunt-contrib-copy"   : "0.7.0"
-
-
+  "name": "zeroTable-gitbook",
+  "dependencies": {
+    "gitbook-cli": "*",
+    "gitbook-plugin-richquotes": "0.0.5",
+    "gitbook-plugin-github": "~1.1.0",
+    "gitbook-plugin-ga": "~0.2.1"
+  },
+  "scripts": {
+    "make": "gitbook build _booksrc documentation"
   }
 }
