@@ -28,8 +28,8 @@ ZeroTable.Bindable.prototype={
 
             for (var i = 0; i < this.bindable_bounds[what].length; i++) {
                 var cR = this.bindable_bounds[what][i].apply(event, params);
-                if (event._interupted === true) {
-                    return false;
+                if (event.interrupted() === true) {
+                    return event;
                 }
             }
 
@@ -49,7 +49,7 @@ ZeroTable.Bindable.prototype={
 
         }
 
-        return true;
+        return event;
 
     },
 

@@ -14,4 +14,8 @@ ZeroTable.Bindable.Event.prototype={
         this._interupted = true;
     },
 
+    interrupted: function(){
+        return this._interupted;
+    }
+
 };

@@ -16,11 +16,11 @@ describe("ExtendClass", function() {
     var B = function(){};
     ZeroTable.extendClass(B,A,{
         foo:function(what1, what2){
-            return this.super("foo", " " + what1 , " " + what2);
+            return this._PARENT.foo(" " + what1 , " " + what2);
         },
 
         upperFoo : function(what1,what2){
-            return this.super("foo", what1.toUpperCase(), what2.toUpperCase());
+            return this._PARENT.foo(what1.toUpperCase(), what2.toUpperCase());
         }
 
     });

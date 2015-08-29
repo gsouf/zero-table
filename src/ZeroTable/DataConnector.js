@@ -139,8 +139,6 @@ ZeroTable.DataConnector.prototype = {
 
         }, delay);
 
-
-
     },
 
     getData : function(){

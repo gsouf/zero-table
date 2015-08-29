@@ -16,7 +16,6 @@ describe("Bindable", function() {
         i=0;
     });
 
-
     it("Triggers bound callbacks", function() {
         expect(i).toEqual(0);
         instance.fire("foo");
@@ -29,8 +28,14 @@ describe("Bindable", function() {
         expect(i).toEqual(0);
         instance.fire("foo");
         expect(i).toEqual(1);
-
     });
+
+
+    it("is not interrupted", function() {
+        var e = instance.fire("foo");
+        expect(e.interrupted()).toBe(false);
+    });
+
 
 
     var text ="";
@@ -55,9 +60,15 @@ describe("Bindable", function() {
 
     var j = 0;
 
+
+
     instanceB.bind("foo",function(){
         j++;
-        return false;
+    });
+
+    instanceB.bind("foo",function(){
+        this.stopPropagation();
+        j++;
     });
 
     instanceB.bind("foo",function(){
@@ -65,25 +76,12 @@ describe("Bindable", function() {
     });
 
 
-    it("Doesn't cancels on false", function() {
+    it("stops propagation", function() {
 
         j = 0;
-
-        var retVal = instanceB.fire("foo",[], false );
+        var event = instanceB.fire("foo",[] );
         expect(j).toEqual(2);
-        expect(retVal).toBe(true);
-
-
-
-    });
-
-    it("Cancels on false", function() {
-
-        j = 0;
-
-        var retVal = instanceB.fire("foo",[], true );
-        expect(j).toEqual(1);
-        expect(retVal).toBe(false);
+        expect(event.interrupted()).toBe(true);
 
     });
 

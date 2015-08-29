@@ -58,33 +58,11 @@ module.exports = function(grunt) {
 
         karma: {
 
-
-            options: {
-                frameworks: ['jasmine'],
-                logLevel: "ERROR"
-            },
-
-            unit: {
-                browsers: ['PhantomJS'],
-                logLevel: "ERROR",
-                files: karmaFiles,
-                autoWatch: false,
-                background: true,
-                singleRun: false
-            },
-
             ci: {
-                browsers: ['Firefox','PhantomJS','chrome'],
                 files: karmaFiles,
-                logLevel: "DEBUG",
-                singleRun: true,
-
-                reporters: [{ type : 'lcov', subdir : 'lcov' }],
-
-                preprocessors : { "src/**/*.js" : ["coverage"] },
-                coverageReporter: {
-                    type : 'lcov',
-                    dir : 'coverage/'
+                configFile: 'karma.conf.js',
+                options: {
+                    singleRun: true
                 }
             }
 
