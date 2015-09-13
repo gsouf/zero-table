@@ -47,7 +47,7 @@ ZeroTable.TableInstance = function(table, datapool, options){
         item.prepare(self);
     });
 
-    this.tableEvent("initialize",{});
+    this.tableEvent("onInitialize",{});
 
 
     if(this.autoload){

@@ -47,11 +47,6 @@ module.exports = function(grunt) {
             "grunt" : {
                 files: ['Gruntfile.js','build.json'],
                 options: { reload: true }
-            },
-
-            karma: {
-                files: ['src/**/*.js', 'tests/spec/**/*.spec.js'],
-                tasks: ['karma:unit:run'] //NOTE the :run flag
             }
 
         },

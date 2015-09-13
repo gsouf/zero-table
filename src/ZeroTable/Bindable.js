@@ -6,7 +6,7 @@ ZeroTable.Bindable = function(){};
 
 ZeroTable.Bindable.prototype={
 
-    bind : function(what,how){
+    bind : function(what, how){ 
 
         if(!this.bindable_bounds){
             this.bindable_bounds = {};
@@ -28,6 +28,7 @@ ZeroTable.Bindable.prototype={
 
             for (var i = 0; i < this.bindable_bounds[what].length; i++) {
                 var cR = this.bindable_bounds[what][i].apply(event, params);
+
                 if (event.interrupted() === true) {
                     return event;
                 }

@@ -26,6 +26,7 @@ ZeroTable.createPlugin({
             $tbody.addClass("zt-table-tbody");
             e.$table.find(".zt-table-wrapper .zt-table-table").append($tbody);
 
+
             // TODO THIS SHOULD BE SPLIT IN UPDATE DATA
             
             // rowClass handler : 

@@ -33,7 +33,8 @@ ZeroTable.createPlugin = function(pluginDefinition) {
 
     // constructor function
     var plugin = function(options){
-        this._PARENT.__contruct(pluginDefinition.name, listen, tableKeys);
+
+        ZeroTable.Plugin.apply(this, [pluginDefinition.name, listen, tableKeys]);
 
         this.setOptions(defaultOptions, options);
         this.setOptionOverrides(optionOverrides);
