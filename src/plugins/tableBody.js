@@ -4,8 +4,12 @@
  */
 ZeroTable.createPlugin({
     "name" : "core.tableBody",
-    "defaultOptions" : {},
-    "optionOverrides" : {},
+    "defaultOptions" : {
+        "rowClass" : null
+    },
+    "optionOverrides" : {
+        "rowClass" : "rowClass"
+    },
     "listen" : {
 
         "onClearTable": function(e){
@@ -23,6 +27,13 @@ ZeroTable.createPlugin({
             e.$table.find(".zt-table-wrapper .zt-table-table").append($tbody);
 
             // TODO THIS SHOULD BE SPLIT IN UPDATE DATA
+            
+            // rowClass handler : 
+            // option rowClass allow to define a callback that can put class for a row depending on the row data
+            var rowClassHandler = this.plugin.getOption("rowClass", tableInstance);
+            if(rowClassHandler !== null && rowClassHandler !== false && typeof rowClassHandler !== "function"){
+                throw "bad type for 'rowClass' option. It should be null or a function";
+            }
 
             tableInstance.tableEvent("beforeDrawRows", e);
 
@@ -34,6 +45,14 @@ ZeroTable.createPlugin({
                 var $row = tableInstance.drawer.drawRow($table,{"role" : "data"});
                 $row.data("dataSet", dataRow);
                 $row.addClass("zt-data-row");
+                
+                // rowClass
+                if(rowClassHandler){
+                    var rowClass = rowClassHandler(dataRow);
+                    if(rowClass){
+                        $row.addClass(rowClass);
+                    }
+                }
 
                 ZeroTable.foreach(tableInstance.table.columns, function(columnDef){
                     if(columnDef.options.visible){
