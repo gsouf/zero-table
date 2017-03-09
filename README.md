@@ -1,7 +1,7 @@
 ZERO TABLE
 ==========
 
-[![Build Status](https://drone.io/github.com/gsouf/zero-table/status.png)](https://drone.io/github.com/gsouf/zero-table/latest)
+[![Build Status](https://travis-ci.org/gsouf/zero-table.svg?branch=master)](https://travis-ci.org/gsouf/zero-table)
 [![Code Climate](https://codeclimate.com/github/gsouf/zero-table/badges/gpa.svg)](https://codeclimate.com/github/gsouf/zero-table)
 [![Test Coverage](https://codeclimate.com/github/gsouf/zero-table/badges/coverage.svg)](https://codeclimate.com/github/gsouf/zero-table/coverage)
 
