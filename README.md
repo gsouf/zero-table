@@ -7,32 +7,13 @@ ZERO TABLE
 
 A modular javascript grid library.
 
-It is a work in progress, I pulbish it now as an alpha version because it is already working and powerful, but some features are not implemented, 
-need improvement or may change until the stable version. Moreover the doc is only partially written at the moment.
-
-The generated javascript and css are not pushed at the moment you have to build it by yourself (explained bellow in this file)
-
-
-Pros & Cons
------------
-
-ZeroTable pros :
-
-* doesnt use the ``<table>`` tag, making styles very flexible
-* the data layer is easy to implement to fit any application.
-* the api is decoupled with adapters, you can simply change an adapter to do your custom job
-* And for more customization, the library works mainly through plugin. You can easily add, remove or replace plugins
-
-
-ZeroTable cons :
-
-* Working with plugin is very flexible, but it mays lead to compatibility problems between plugins
-* Writing your own plugin require you to have a good understanding of the library core
+It is a work in progress, it is already working and powerful, but some features are not implemented, 
+need improvement or may change until the stable version. Moreover the doc is not available at the moment.
 
 Dependency
 ----------
 
-Zero table has only **jquery** as dependency
+Zero table depends on **jquery**.
 
 Quick Start
 -----------
@@ -52,9 +33,9 @@ The following sample will give you the most basic example of the library :
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Zero table</title>
-	<link rel="stylesheet" type="text/css" href="file:///home/sghzal/PhpstormProjects/zero-table/build/style.min.css"/>
+	<link rel="stylesheet" type="text/css" href="zero-table.min.css"/>
 	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-	<script src="file:///home/sghzal/PhpstormProjects/zero-table/build/zero-table.min.js"></script>
+	<script src="zero-table.min.js"></script>
 </head>
 <body>
 	<div id="table" style="height:200px;"></div>
@@ -119,21 +100,17 @@ short FAQ (LINKS TODO) :
 * How to use an ajax data source
 
 
-Develop, build, contribute
---------------------------
+Develop
+-------
 
 If you want to contribute here are the steps to build the library :
 
 ```shell
-    $> npm install
-    $> grunt dev-compile # build everything a single time
-    $> grunt watch # constantly awaits for file change to recompile the sources
+    npm install
+    grunt dev-compile
+    
+    # alternatively you can watch for changes
+    grunt watch 
 ```
 
 The files are generated in the directory ``build``
-
-
-Like it ?
----------
-
-[![endorse](https://api.coderwall.com/souf/endorsecount.png)](https://coderwall.com/souf)
