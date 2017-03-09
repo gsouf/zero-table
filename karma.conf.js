@@ -5,6 +5,12 @@ module.exports = function(config) {
         logLevel: "DEBUG",
         captureConsole: true,
 
+        plugins: [
+            'karma-phantomjs-launcher',
+            'karma-jasmine',
+            'karma-coverage'
+        ],
+
         reporters: ['progress', 'coverage'],
 
         preprocessors: {"src/**/*.js": ["coverage"]},
