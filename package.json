@@ -1,6 +1,25 @@
 {
   "name": "zero-table",
   "version": "0.1.0",
+
+  "description": "Data grid for the browser",
+
+  "keywords": ["data grid", "data table"],
+
+  "homepage": "https://github.com/gsouf/zero-table",
+
+  "license": "Fair",
+
+  "author": {
+    "name": "Soufiane Ghzal",
+    "url": "https://github.com/gsouf"
+  },
+
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/gsouf/zero-table"
+  },
+
   "devDependencies": {
     "grunt": "^1.0.1",
     "grunt-contrib-copy": "^1.0.0",
