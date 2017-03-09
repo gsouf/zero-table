@@ -20,7 +20,7 @@ module.exports = function(grunt) {
             },
             build: {
                 src: sourceFiles.javascript,
-                dest: 'build/<%= pkg.name %>.min.js'
+                dest: 'dist/<%= pkg.name %>.min.js'
             }
         },
 
@@ -30,7 +30,7 @@ module.exports = function(grunt) {
             },
             dist: {
                 files: [{
-                    "build/zero-table.min.css" : sourceFiles.sass
+                    "dist/zero-table.min.css" : sourceFiles.sass
                 }]
             }
         },
@@ -74,7 +74,7 @@ module.exports = function(grunt) {
                         expand: true,
                         cwd   : "style/images",
                         src   : "**/*",
-                        dest  : "build/images"
+                        dest  : "dist/images"
 
                     }
                 ]
