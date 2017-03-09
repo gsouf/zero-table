@@ -138,7 +138,7 @@ ZeroTable.createPlugin({
                     this.rowSetSelection(tableInstance, $row, false);
                     return true;
                 }else if( selectionType !== -1 ){
-                    this.clearSelection();
+                    this.clearTableSelection(tableInstance);
                     this.rowSetSelection(tableInstance, $row, true);
                     return true;
                 }
@@ -159,7 +159,7 @@ ZeroTable.createPlugin({
         },
 
         getSelectedRows : function(tableInstance){
-            return this.$table.find(this.getOption("selectionClass"));
+            return tableInstance.$table.find('.' + this.getOption("selectionClass"));
         },
 
 
@@ -175,6 +175,14 @@ ZeroTable.createPlugin({
                     this.__internalSelectionRemove(tableInstance, tableInstance.table.getRowId($row));
                 }
             }
+        },
+
+        clearTableSelection: function(tableInstance){
+            var rows = this.getSelectedRows(tableInstance);
+            for(var i = 0 ; i < rows.length ; i++){
+                this.rowSetSelection(tableInstance, $(rows[i]),false);
+            }
+            tableInstance.internalSelection = {};
         },
 
         /**
@@ -250,11 +258,7 @@ ZeroTable.createPlugin({
             },
 
             clearSelection : function(){
-                var rows = plugin.getSelectedRows(this);
-                for(var i = 0 ; i < rows.length ; i++){
-                    plugin.rowSetSelection(this, $(rows[i]),false);
-                }
-                this.internalSelection = {};
+                plugin.clearTableSelection(this);
                 //this.__updateSelectionCount();
             },
         };

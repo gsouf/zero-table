@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Zero table</title>
+    <link rel="stylesheet" type="text/css" href="../dist/zero-table.min.css"/>
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../dist/zero-table.min.js"></script>
+</head>
+<body>
+<div id="table" style="height:200px;"></div>
+<script>
+    $(function(){
+        var config = {
+
+            maxSelection: 1,
+
+            columns: [
+                {
+                    name: "firstname"
+                },
+                {
+                    name: "lastname"
+                },
+                {
+                    name: "age"
+                }
+            ]
+        };
+
+        var data = [
+
+            {
+                firstname: "bart",
+                lastname : "simpsons"
+            },
+            {
+                firstname: "homer",
+                lastname : "simpsons"
+            },
+            {
+                firstname: "lisa",
+                lastname : "simpsons"
+            },
+            {
+                firstname: "marge",
+                lastname : "simpsons"
+            }
+        ];
+
+        var tableInstance = new ZeroTable.TableInstance(config, data);
+        $("#table").append(tableInstance.draw());
+
+
+    });
+</script>
+</body>
+</html>
