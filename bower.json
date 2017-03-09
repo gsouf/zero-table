@@ -1,15 +1,15 @@
 {
   "name": "zero-table",
-  "version": "0.0.0",
+  "version": "0.1.1",
   "authors": [
     "sghzal <sghzal@gmail.com>"
   ],
-  "description": "Html grid without table and with extensibility in mind",
+  "description": "Data grid for the browser",
   "keywords": [
     "grid",
     "data"
   ],
-  "license": "MIT",
+  "license": "Fair",
   "ignore": [
     "**/.*",
     "node_modules",
