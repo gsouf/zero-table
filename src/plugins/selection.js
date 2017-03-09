@@ -18,7 +18,7 @@ ZeroTable.createPlugin({
 
         "rowClick" : function(e){
 
-            if( ! e.$row.hasClass(this.plugin.getOption("noSelectableClass"))){
+            if( e.$row.hasClass("zt-data-row") && ! e.$row.hasClass(this.plugin.getOption("noSelectableClass"))){
                 this.plugin.emulateClick(e.tableInstance, e.$row, e.event.shiftKey);
             }
 
