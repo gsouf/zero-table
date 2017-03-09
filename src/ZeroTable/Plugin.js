@@ -40,10 +40,10 @@ ZeroTable.Plugin.prototype = {
 
     },
 
-    setOptions: function(defaultOptions, overide){
+    setOptions: function(defaultOptions, override){
         this._options = {};
-        if(overide){
-            ZeroTable.extend(this._options, [defaultOptions, overide]);
+        if(override){
+            ZeroTable.extend(this._options, [defaultOptions, override]);
         }else if(defaultOptions){
             this._options = defaultOptions;
         }

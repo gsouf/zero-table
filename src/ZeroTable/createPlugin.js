@@ -4,7 +4,7 @@
  * @param {Object} pluginDefinition - Plugin configuration
  * @param {Object} pluginDefinition.name - MANDATORY - Plugin name - used for fast plugin reference
  * @param {Object} pluginDefinition.init - A function called at the plugin instantiation
- * @param {Object} pluginDefinition.defaultOptions - The default options for the plugin, these options may be overwritten at plugin instanciation
+ * @param {Object} pluginDefinition.defaultOptions - The default options for the plugin, these options may be overwritten during plugin instantiation
  * @param {Object} pluginDefinition.optionOverrides - set of matches for option override from table options
  * @param {Object} pluginDefinition.listen - List of table events to listen. In the callback ``this`` will always refer to the plugin instance
  * @param {Object} pluginDefinition.tableKeys - List of table function and property that will be publicly added to the table instance
