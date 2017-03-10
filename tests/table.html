@@ -49,7 +49,7 @@
             }
         ];
 
-        var tableInstance = new ZeroTable.TableInstance(config, data);
+        var tableInstance = new ZeroTable.TableInstance(config, data, {limit: 3});
         $("#table").append(tableInstance.draw());
 
 
