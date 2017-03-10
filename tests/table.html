@@ -9,6 +9,9 @@
 </head>
 <body>
 <div id="table" style="height:200px;"></div>
+<div id="tableTools">
+
+</div>
 <script>
     $(function(){
         var config = {
@@ -51,6 +54,9 @@
 
         var tableInstance = new ZeroTable.TableInstance(config, data, {limit: 3});
         $("#table").append(tableInstance.draw());
+
+        console.log(tableInstance);
+        $("#tableTools").append(new ZeroTable.Tools.Paginator(tableInstance).draw());
 
 
     });

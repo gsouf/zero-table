@@ -165,4 +165,15 @@
   -ms-user-select: none;
   user-select: none; }
 
+.zt-paginator {
+  font-size: 10px; }
+  .zt-paginator > * {
+    display: inline-block;
+    margin: 0 3px; }
+  .zt-paginator input {
+    width: 25px;
+    padding: 2px;
+    font-size: 10px;
+    text-align: right; }
+
 /*# sourceMappingURL=zero-table.min.css.map */

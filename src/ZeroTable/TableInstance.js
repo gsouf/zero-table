@@ -64,12 +64,13 @@ ZeroTable.TableInstance.prototype = {
         var event;
         var tableInstance = this;
 
+        var $table;
         if(!this.$table) {
-            var $table = tableInstance.drawer.drawTable(tableInstance);
+            $table = tableInstance.drawer.drawTable(tableInstance);
             this.$table = $table;
             this.tableEvent("onInitTable", { "$table" : $table });
         } else{
-            var $table = this.$table;
+            $table = this.$table;
             this.tableEvent("onClearTable", { "$table" : $table });
         }
 

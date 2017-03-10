@@ -8,7 +8,7 @@ ZeroTable.createPlugin({
     "init" : null,
     "listen" : {},
     "pluginPrototype" : {},
-    "tableKey" : {
+    "tableKeys" : {
 
         "countPages" : function(){
             var dataConnector = this.dataConnector;
@@ -33,8 +33,10 @@ ZeroTable.createPlugin({
             return Math.ceil(dataConnector.offset/dataConnector.limit) + 1;
         },
 
-        "setPage" : function(page){
+        "setPage" : function(page, delay){
             var dataConnector = this.dataConnector;
+
+
 
             if(!dataConnector.limit){
                 return false;
@@ -49,6 +51,9 @@ ZeroTable.createPlugin({
             }
 
             dataConnector.setOffset(dataConnector.limit * (page - 1));
+
+            delay = delay || 50;
+            dataConnector.update(delay);
         },
 
         "goToLastPage" : function(){
