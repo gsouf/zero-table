@@ -39,8 +39,11 @@ ZeroTable.TableInstance = function(table, datapool, options){
 
     // Forward dataconnector update
     this.dataConnector.bind("dataUpdated",function(dataConnector){
-        self.draw();
-        self.tableEvent("dataUpdated", { "dataConnector" : dataConnector });
+        self.tableEvent("dataUpdated", {
+            "dataConnector" : dataConnector,
+            "data" : dataConnector.getData(),
+            "$table": self.$table
+        });
     });
 
     ZeroTable.foreach(this.table.plugins, function(item,i,set){
@@ -69,6 +72,23 @@ ZeroTable.TableInstance.prototype = {
             $table = tableInstance.drawer.drawTable(tableInstance);
             this.$table = $table;
             this.tableEvent("onInitTable", { "$table" : $table });
+
+            // If not in dom, we trigger dom added, once
+            // That's useful for instance for tasks that need to get
+            // get the offset height/width of an element (for instance in header plugin)
+            if(!jQuery.contains(document, $table[0])){
+                var self = this;
+                $(document).on('DOMNodeInserted', function(e){
+                    if(e.target === $table[0]){
+                        self.tableEvent('addedToDom', {
+                            '$table': $table
+                        })
+                        $(document).off(e);
+                    }
+                });
+            }
+
+
         } else{
             $table = this.$table;
             this.tableEvent("onClearTable", { "$table" : $table });

@@ -6,10 +6,9 @@ ZeroTable.DataConnector = function(dataAdapter, options){
     ZeroTable.extend(this,[
         {
             order   : {}, // columnName : "asc"/"desc"
-            filters : [],
+            filters : {},
             limit   : 50,
             offset  : 0,
-            _currentSearch    : {},  // columnName : {...}
             defaultUpdateDelay: 200
         },
         options
@@ -38,16 +37,16 @@ ZeroTable.DataConnector.prototype = {
         this.fire("orderChange",[this]);
     },
 
-    searchColumn: function(columnName, value){
+    filterColumn: function(columnName, value){
         if(null === value || undefined === value){
-            delete this._currentSearch[columnName];
+            delete this.filters[columnName];
         }else{
-            this._currentSearch[columnName] = value;
+            this.filters[columnName] = value;
         }
     },
 
-    getSearchers: function(){
-        return this._currentSearch;
+    getFilters: function(){
+        return this.filters;
     },
 
     getOrder : function(name){

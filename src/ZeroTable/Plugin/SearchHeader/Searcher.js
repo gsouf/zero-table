@@ -33,7 +33,7 @@ ZeroTable.Plugin.SearchHeader.Searcher.prototype = {
         return $cloneElement;
     },
 
-    "update" : function(value){
+    update : function(value){
 
         if(value === this.value)
             return;
@@ -46,7 +46,7 @@ ZeroTable.Plugin.SearchHeader.Searcher.prototype = {
 
     },
 
-    "getValue":function(){
+    getValue: function(){
         return this.value;
     },
 

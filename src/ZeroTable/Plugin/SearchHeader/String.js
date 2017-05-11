@@ -31,7 +31,7 @@ ZeroTable.extendClass(ZeroTable.Plugin.SearchHeader.String, ZeroTable.Plugin.Sea
             }
 
             self.update({
-                "type" : "string",
+                "type" : "eq",
                 "value": value
             });
         });

@@ -26,7 +26,7 @@ ZeroTable.createPlugin({
             e.tableInstance.fire("headerUpdated",  [e]);
         },
 
-        "headerUpdated": function(e){
+        "addedToDom,headerUpdated": function(e){
             var height = e.$table.find(".zt-table-header").outerHeight() + "px";
             e.$table.find(".zt-table-wrapper").css("top", height);
         }

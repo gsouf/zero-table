@@ -38,7 +38,7 @@ ZeroTable.createPlugin({
             }
         },
 
-        "initialize": function(e){
+        "onInitialize": function(e){
             this.plugin.initSearchers(e.tableInstance);
         }
 
@@ -60,7 +60,7 @@ ZeroTable.createPlugin({
 
                     tableInstance.__searchHeaderSearchers[columnDef.options.name] = searcher;
                     searcher.on('valueChanged',function(value, searcher){
-                        tableInstance.dataConnector.searchColumn(columnDef.options.name, value);
+                        tableInstance.dataConnector.filterColumn(columnDef.options.name, value);
                         tableInstance.dataConnector.update(self.getOption("delay"));
                     });
 

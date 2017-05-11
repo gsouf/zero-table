@@ -18,18 +18,21 @@ ZeroTable.createPlugin({
 
         "onDrawTable": function(e) {
 
-            var tableInstance = e.tableInstance;
-            var $table = e.$table;
-            // TODO : THIS SHOULD BE SPLIT IN INIT TABLE
-
+            // TODO this should be in init
             var $tbody = $("<div/>");
             $tbody.addClass("zt-table-tbody");
             e.$table.find(".zt-table-wrapper .zt-table-table").append($tbody);
+        },
 
+        dataUpdated: function(e){
 
-            // TODO THIS SHOULD BE SPLIT IN UPDATE DATA
-            
-            // rowClass handler : 
+            var tableInstance = e.tableInstance;
+            var $table = e.$table;
+            var $tbody = $table.find('.zt-table-tbody');
+
+            $tbody.empty();
+
+            // rowClass handler :
             // option rowClass allow to define a callback that can put class for a row depending on the row data
             var rowClassHandler = this.plugin.getOption("rowClass", tableInstance);
             if(rowClassHandler !== null && rowClassHandler !== false && typeof rowClassHandler !== "function"){
@@ -46,7 +49,7 @@ ZeroTable.createPlugin({
                 var $row = tableInstance.drawer.drawRow($table,{"role" : "data"});
                 $row.data("dataSet", dataRow);
                 $row.addClass("zt-data-row");
-                
+
                 // rowClass
                 if(rowClassHandler){
                     var rowClass = rowClassHandler(dataRow);
@@ -66,11 +69,11 @@ ZeroTable.createPlugin({
 
                         // E:afterDrawCell
                         tableInstance.tableEvent("afterDrawCell", {
-                                "$table" : $table,
-                                "dataRow" : dataRow,
-                                "columnDef" : columnDef,
-                                "$row" : $row,
-                                "cell" : cell
+                            "$table" : $table,
+                            "dataRow" : dataRow,
+                            "columnDef" : columnDef,
+                            "$row" : $row,
+                            "cell" : cell
                         });
 
                         $row.append(cell.$cell);
@@ -84,8 +87,6 @@ ZeroTable.createPlugin({
 
             // E:afterDrawRows
             tableInstance.tableEvent("afterDrawRows", e);
-
-
         }
 
 

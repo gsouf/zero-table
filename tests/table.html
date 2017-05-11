@@ -55,7 +55,6 @@
         var tableInstance = new ZeroTable.TableInstance(config, data, {limit: 3});
         $("#table").append(tableInstance.draw());
 
-        console.log(tableInstance);
         $("#tableTools").append(new ZeroTable.Tools.Paginator(tableInstance).draw());
 
 

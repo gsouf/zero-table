@@ -57,7 +57,7 @@ ZeroTable.extendClass(ZeroTable.Data.DataArray, ZeroTable.Data.DataAdapter, {
     getSortedFilteredData : function(options){
         var data = this.data.slice(0);
 
-        if(options.filter){
+        if(options.filters && Object.keys(options.filters).length > 0){
             throw "NOT IMPLEMENTED YET";
             // TODO
         }
