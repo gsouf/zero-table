@@ -18,12 +18,12 @@ ZeroTable.Plugin.SearchHeader.SearcherFactory = function(options){
 
 ZeroTable.Plugin.SearchHeader.SearcherFactory.prototype = {
 
-    build: function(resource){
+    build: function(resource, options){
 
         if(typeof resource == "string"){
 
             if(this.searchers.hasOwnProperty(resource)){
-                return new this.searchers[resource]();
+                return new this.searchers[resource](options);
             }else{
                 throw "No such searcher in factory : '" + resource + "'";
             }

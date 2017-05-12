@@ -1,16 +1,14 @@
 ZeroTable.Plugin.SearchHeader.String = function(options){
-
-    var self = this;
-
     ZeroTable.Plugin.SearchHeader.Searcher.apply(this);
-
-    ZeroTable.extend(this,[
+    ZeroTable.extend(this.options =
         {
-
+            contains: false,
+            containsRight: true,
+            containsLeft: true
         },
-        options
-    ]);
-
+        [options]
+    );
+    console.log(this.options);
 };
 
 ZeroTable.extendClass(ZeroTable.Plugin.SearchHeader.String, ZeroTable.Plugin.SearchHeader.Searcher, {
@@ -29,10 +27,19 @@ ZeroTable.extendClass(ZeroTable.Plugin.SearchHeader.String, ZeroTable.Plugin.Sea
             if("" == value){
                 self.update(null);
             } else {
-                self.update({
-                    "type" : "eq",
-                    "value": value
-                });
+                if(self.options.contains){
+                    self.update({
+                        type : "contains",
+                        containsRight: self.options.containsRight,
+                        containsLeft: self.options.containsLeft,
+                        value: value
+                    });
+                } else {
+                    self.update({
+                        "type" : "eq",
+                        "value": value
+                    });
+                }
             }
         });
     },

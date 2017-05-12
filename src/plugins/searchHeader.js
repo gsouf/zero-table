@@ -55,8 +55,8 @@ ZeroTable.createPlugin({
 
             ZeroTable.foreach(tableInstance.table.columns, function(columnDef){
                 if(columnDef.options.searcher){
-
-                    var searcher = self.getOption("searcherFactory").build(columnDef.options.searcher);
+                    
+                    var searcher = self.getOption("searcherFactory").build(columnDef.options.searcher, columnDef.options.searcherOptions);
 
                     tableInstance.__searchHeaderSearchers[columnDef.options.name] = searcher;
                     searcher.on('valueChanged',function(value, searcher){
