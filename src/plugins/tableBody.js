@@ -12,11 +12,11 @@ ZeroTable.createPlugin({
     },
     "listen" : {
 
-        "onClearTable": function(e){
+        onClearTable: function(e){
             e.$table.find(".zt-table-wrapper .zt-table-table .zt-table-tbody").remove();
         },
 
-        "onDrawTable": function(e) {
+        onDrawTable: function(e) {
 
             // TODO this should be in init
             var $tbody = $("<div/>");

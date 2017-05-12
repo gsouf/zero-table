@@ -45,10 +45,10 @@ ZeroTable.createPlugin({
                 });
 
                 e.tableInstance.tableEvent("rowClick", {
+                    "cell"  : e.cell,
                     "$row"   : e.$row,
                     "$table" : e.$table,
-                    "event"  : clickEvent,
-                    "tableInstance" : e.tableInstance
+                    "event"  : clickEvent
                 });
             });
         }

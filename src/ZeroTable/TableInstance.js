@@ -132,7 +132,7 @@ ZeroTable.TableInstance.prototype = {
      * Shortcut for fire with tableEvent object
      */
     tableEvent : function(eventName, data){
-        this.fire(eventName, [
+        return this.fire(eventName, [
             new ZeroTable.TableEvent(this, data)
         ]);
     }

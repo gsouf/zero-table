@@ -16,16 +16,17 @@ ZeroTable.createPlugin({
     "init" : null,
     "listen" : {
 
-        "rowClick" : function(e){
-
-            if( e.$row.hasClass("zt-data-row") && ! e.$row.hasClass(this.plugin.getOption("noSelectableClass"))){
+        rowClick: function(e){
+            if(
+                e.$row.hasClass("zt-data-row")
+                && ! e.$row.hasClass(this.plugin.getOption("noSelectableClass"))
+                && ! e.cell.$cell.hasClass(this.plugin.getOption("noSelectableClass"))
+            ){
                 this.plugin.emulateClick(e.tableInstance, e.$row, e.event.shiftKey);
             }
-
         },
 
-        "afterDrawRows" : function(e){
-
+        afterDrawRows: function(e){
             if(this.plugin.getOption("keepSelection") == true) {
                 if ( ! e.tableInstance.table.idProperties > 0) {
                     throw "Cannot enable keepSelection feature. table.idProperties was not specified";
@@ -34,7 +35,12 @@ ZeroTable.createPlugin({
                 this.plugin.__restoreSelection(e.tableInstance);
 
             }
+        },
 
+        afterDrawCell: function(e){
+            if(e.columnDef.options.disableSelection){
+                e.cell.$cell.addClass(this.plugin.getOption("noSelectableClass"));
+            }
         }
 
     },
