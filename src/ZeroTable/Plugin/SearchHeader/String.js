@@ -8,7 +8,6 @@ ZeroTable.Plugin.SearchHeader.String = function(options){
         },
         [options]
     );
-    console.log(this.options);
 };
 
 ZeroTable.extendClass(ZeroTable.Plugin.SearchHeader.String, ZeroTable.Plugin.SearchHeader.Searcher, {
