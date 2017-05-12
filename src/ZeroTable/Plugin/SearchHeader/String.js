@@ -27,13 +27,13 @@ ZeroTable.extendClass(ZeroTable.Plugin.SearchHeader.String, ZeroTable.Plugin.Sea
 
             var value = $(this).val();
             if("" == value){
-                value = null;
+                self.update(null);
+            } else {
+                self.update({
+                    "type" : "eq",
+                    "value": value
+                });
             }
-
-            self.update({
-                "type" : "eq",
-                "value": value
-            });
         });
     },
 
