@@ -38,7 +38,7 @@ ZeroTable.extendClass(ZeroTable.Plugin.SearchHeader.String, ZeroTable.Plugin.Sea
     },
 
     "__updateElements": function($elements, value){
-        $elements.find("input").val(value.value);
+        $elements.find("input").val(value ? value.value : '');
     }
 
 });
