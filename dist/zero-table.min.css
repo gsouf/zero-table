@@ -175,5 +175,9 @@
     padding: 2px;
     font-size: 10px;
     text-align: right; }
+  .zt-paginator .zt-pagi-ico {
+    cursor: pointer; }
+    .zt-paginator .zt-pagi-ico:hover {
+      color: #006600; }
 
 /*# sourceMappingURL=zero-table.min.css.map */
