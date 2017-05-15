@@ -30,6 +30,8 @@
 
     "src/ZeroTable/StringRenderParser.js",
 
+    "src/ZeroTable/Column/check.js",
+
     "src/ZeroTable/Plugin.js",
 
     "src/ZeroTable/Plugin/SearchHeader/SearcherFactory.js",

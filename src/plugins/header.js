@@ -47,7 +47,11 @@ ZeroTable.createPlugin({
 
             ZeroTable.foreach(tableInstance.table.columns, function(columnDef){
                 if(columnDef.options.visible){
-                    var title = columnDef.options.header ? columnDef.options.header : columnDef.options.name;
+                    var title = columnDef.options.header;
+                    if(title === null || title === false || title === undefined){
+                        title = columnDef.options.name;
+                    }
+
                     var cell = tableInstance.drawer.drawCell(columnDef, null, {"skipClass": true});
                     var $cell = cell.$cell
                     cell.addRole("header");

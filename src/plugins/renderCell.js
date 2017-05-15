@@ -18,7 +18,13 @@ ZeroTable.createPlugin({
         "afterDrawCell": function(e){
 
             if(e.cell.hasRole("data")){
-                var value = this.plugin.renderParse(e.dataRow, e.columnDef.getDataIndex(), e.columnDef.options.render, e.tableInstance);
+                var value;
+                if(!e.columnDef.options.render && e.columnDef.options.content){
+                    value = e.columnDef.options.content;
+                } else {
+                    value = this.plugin.renderParse(e.dataRow, e.columnDef.getDataIndex(), e.columnDef.options.render, e.tableInstance);
+                }
+
                 e.cell.$cell.html(value);
             }
 
