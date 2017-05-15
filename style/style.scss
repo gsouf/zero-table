@@ -251,32 +251,29 @@
 }
 
 .zt-checkbox{
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border-radius: 2px;
   background: #dcdcdc;
   border: 1px solid #c3c3c3;
-
   margin: auto;
   cursor: pointer;
-
   position: relative;
 }
 
 .zt-selected .zt-checkbox{
 
   background: #41860e;
-  color: white;
 
   &:before{
     position: absolute;
-    content: '\2714';
-    font-size: 10px;
-    line-height: 10px;
-    text-align: center;
-    left: 1px;
-    top: 1px;
-    right: 0;
+    content: '';
+    left: 2px;
+    top: 2px;
+    right: 2px;
+    bottom: 2px;
+    background: #eeffec;
+    border-radius: 1px;
   }
 }
 
