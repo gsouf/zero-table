@@ -32,8 +32,6 @@ ZeroTable.createPlugin({
 
             $tbody.empty();
 
-
-
             tableInstance.tableEvent("beforeDrawRows", e);
 
             ZeroTable.foreach(e.data, function(dataRow){
@@ -42,6 +40,7 @@ ZeroTable.createPlugin({
                 tableInstance.tableEvent("beforeDrawRow", { "$table" : $table, "dataRow" : dataRow });
 
                 var $row = tableInstance.drawer.drawRow($table,{"role" : "data"});
+                $row.addClass("zt-data-row");
 
                 tableInstance.refreshRow($row, dataRow);
 
@@ -60,11 +59,20 @@ ZeroTable.createPlugin({
         return {
             refreshRow: function($row, dataRow){
 
-                $row.removeClass();
+                // Remove custom class because they depend on the data
+                var customClass = $row.attr('data-zt-custom-class');
+                if(customClass){
+                    $row.removeClass(customClass);
+                }
+
+                // Empty the row and build it again
                 $row.empty();
 
                 var tableInstance = this;
                 var $table = tableInstance.$table;
+
+                // Persist the dataset
+                $row.data("dataSet", dataRow);
 
                 // rowClass handler :
                 // option rowClass allows to define a callback that can put class for a row depending on the row data
@@ -73,17 +81,16 @@ ZeroTable.createPlugin({
                     throw "bad type for 'rowClass' option. It should be null or a function";
                 }
 
-                $row.addClass("zt-data-row");
-                $row.data("dataSet", dataRow);
-
-                // rowClass
                 if(rowClassHandler){
                     var rowClass = rowClassHandler(dataRow);
                     if(rowClass){
                         $row.addClass(rowClass);
+                        $row.attr('data-zt-custom-class', rowClass);
                     }
                 }
 
+
+                // Draw cells
                 ZeroTable.foreach(tableInstance.table.columns, function(columnDef){
                     if(columnDef.options.visible){
 
