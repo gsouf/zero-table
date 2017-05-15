@@ -114,7 +114,7 @@ ZeroTable.createPlugin({
         }
     },
 
-    "tableKey" : {
+    "tableKeys" : {
 
     }
 });

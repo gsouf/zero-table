@@ -32,12 +32,7 @@ ZeroTable.createPlugin({
 
             $tbody.empty();
 
-            // rowClass handler :
-            // option rowClass allow to define a callback that can put class for a row depending on the row data
-            var rowClassHandler = this.plugin.getOption("rowClass", tableInstance);
-            if(rowClassHandler !== null && rowClassHandler !== false && typeof rowClassHandler !== "function"){
-                throw "bad type for 'rowClass' option. It should be null or a function";
-            }
+
 
             tableInstance.tableEvent("beforeDrawRows", e);
 
@@ -47,8 +42,39 @@ ZeroTable.createPlugin({
                 tableInstance.tableEvent("beforeDrawRow", { "$table" : $table, "dataRow" : dataRow });
 
                 var $row = tableInstance.drawer.drawRow($table,{"role" : "data"});
-                $row.data("dataSet", dataRow);
+
+                tableInstance.refreshRow($row, dataRow);
+
+                $tbody.append($row);
+            });
+
+            // E:afterDrawRows
+            tableInstance.tableEvent("afterDrawRows", e);
+        }
+
+
+
+    },
+    "pluginPrototype" : {},
+    "tableKeys" : function(plugin){
+        return {
+            refreshRow: function($row, dataRow){
+
+                $row.removeClass();
+                $row.empty();
+
+                var tableInstance = this;
+                var $table = tableInstance.$table;
+
+                // rowClass handler :
+                // option rowClass allows to define a callback that can put class for a row depending on the row data
+                var rowClassHandler = plugin.getOption("rowClass", tableInstance);
+                if(rowClassHandler !== null && rowClassHandler !== false && typeof rowClassHandler !== "function"){
+                    throw "bad type for 'rowClass' option. It should be null or a function";
+                }
+
                 $row.addClass("zt-data-row");
+                $row.data("dataSet", dataRow);
 
                 // rowClass
                 if(rowClassHandler){
@@ -82,16 +108,7 @@ ZeroTable.createPlugin({
 
                 // E:afterDrawRow
                 tableInstance.tableEvent("afterDrawRow", { "$table" : $table, "dataRow" : dataRow, "$row" : $row });
-                $tbody.append($row);
-            });
-
-            // E:afterDrawRows
-            tableInstance.tableEvent("afterDrawRows", e);
+            }
         }
-
-
-
-    },
-    "pluginPrototype" : {},
-    "tableKey" : {}
+    }
 });

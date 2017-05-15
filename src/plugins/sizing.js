@@ -48,5 +48,5 @@ ZeroTable.createPlugin({
         }
 
     },
-    "tableKey" : {}
+    "tableKeys" : {}
 });

@@ -32,6 +32,6 @@ ZeroTable.createPlugin({
 
     },
     "pluginPrototype" : {},
-    "tableKey" : {}
+    "tableKeys" : {}
 });
 

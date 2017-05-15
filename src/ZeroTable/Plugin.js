@@ -5,6 +5,10 @@ ZeroTable.Plugin = function(name, tableInstanceEvents, tableInstanceKeys){
 
     this._options = {};
     this._optionOverrides = {};
+
+    if(typeof this.tableInstanceKeys == 'function'){
+        this.tableInstanceKeys = this.tableInstanceKeys.call(null, this);
+    }
 };
 
 ZeroTable.Plugin.prototype = {
@@ -31,6 +35,7 @@ ZeroTable.Plugin.prototype = {
 
             });
         }
+
 
         if(this.tableInstanceKeys){
             ZeroTable.foreach(this.tableInstanceKeys, function(callback, keyName){

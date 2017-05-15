@@ -220,12 +220,12 @@ ZeroTable.createPlugin({
 
 
     },
-    "tableKey" : function(plugin){
+    "tableKeys" : function(plugin){
 
         return {
 
             internalSelection: {},
-            lastSelection: {},
+            lastSelection: null,
 
             "getSelection": function () {
                 var selection = [];
