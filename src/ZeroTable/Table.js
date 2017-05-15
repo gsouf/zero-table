@@ -30,6 +30,12 @@ ZeroTable.Table = function(options){
         self.plugins[k] = ZeroTable.loadPlugin(v);
     });
 
+    if(this.additionalPlugins){
+        ZeroTable.foreach(this.additionalPlugins, function(v, k){
+            self.plugins.push(ZeroTable.loadPlugin(v));
+        });
+    }
+
     ZeroTable.foreach(this.columns, function(item,i,set){
         if ( !(item instanceof ZeroTable.Column.Definition) ) {
             set[i] = new ZeroTable.Column.Definition(item);
