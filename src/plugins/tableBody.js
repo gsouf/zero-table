@@ -22,6 +22,7 @@ ZeroTable.createPlugin({
             var $tbody = $("<div/>");
             $tbody.addClass("zt-table-tbody");
             e.$table.find(".zt-table-wrapper .zt-table-table").append($tbody);
+            e.tableInstance.$tableBody = $tbody;
         },
 
         dataUpdated: function(e){
@@ -115,6 +116,10 @@ ZeroTable.createPlugin({
 
                 // E:afterDrawRow
                 tableInstance.tableEvent("afterDrawRow", { "$table" : $table, "dataRow" : dataRow, "$row" : $row });
+            },
+
+            getTableBodyElement: function(){
+                return this.$tableBody;
             }
         }
     }

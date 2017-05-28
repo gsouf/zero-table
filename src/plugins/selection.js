@@ -183,12 +183,51 @@ ZeroTable.createPlugin({
             }
         },
 
-        clearTableSelection: function(tableInstance){
-            var rows = this.getSelectedRows(tableInstance);
-            for(var i = 0 ; i < rows.length ; i++){
-                this.rowSetSelection(tableInstance, $(rows[i]),false);
+        clearTableSelection: function(tableInstance, includeHidden){
+
+            var self = this;
+
+            if(includeHidden){
+                var rows = tableInstance.getSelection();
+                for(var i = 0 ; i < rows.length ; i++){
+                    this.rowSetSelection(tableInstance, $(rows[i]),false);
+                }
+                tableInstance.internalSelection = {};
+
+                if(rows.length > 0){
+                    tableInstance.tableEvent("selectionChange", {"changed" : true});
+                }
+            } else {
+                var $rows = tableInstance.getTableBodyElement().find('.zt-data-row.' + this.getOption("selectionClass"));
+                if($rows.length > 0){
+                    $rows.each(function(i, v){
+                        self.rowSetSelection(tableInstance, $(v), false);
+                    });
+                    tableInstance.tableEvent("selectionChange", {"changed" : true});
+                }
             }
-            tableInstance.internalSelection = {};
+
+
+
+        },
+
+        selectVisibleRows: function(tableInstance){
+
+            var $rows = tableInstance.getTableBodyElement().find('.zt-data-row');
+            var self = this;
+            var changed = 0;
+
+            $rows.each(function(i, v){
+                var $row = $(v);
+                if(!$row.hasClass('zt-selected')){
+                    self.rowSetSelection(tableInstance, $row, true);
+                    changed++;
+                }
+            });
+
+            if(changed){
+                tableInstance.tableEvent("selectionChange", {"changed" : true});
+            }
         },
 
         /**
@@ -263,9 +302,16 @@ ZeroTable.createPlugin({
             },
 
             clearSelection : function(){
-                plugin.clearTableSelection(this);
-                //this.__updateSelectionCount();
+                plugin.clearTableSelection(this, true);
             },
+
+            clearVisibleSelection : function(){
+                plugin.clearTableSelection(this, false);
+            },
+
+            selectVisibleRows: function(){
+                plugin.selectVisibleRows(this);
+            }
         };
 
     }

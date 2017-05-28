@@ -60,6 +60,11 @@
         position: relative;
         box-sizing: border-box;
 
+        &.zt-no-hpadding{
+          padding-left: 0;
+          padding-right: 0;
+        }
+
         .zt-header-col-order{
           position: absolute;
           left: 0;
@@ -261,17 +266,19 @@
   position: relative;
 }
 
-.zt-selected .zt-checkbox{
+.zt-selected .zt-checkbox,
+.zt-checkbox.zt-active
+{
 
   background: #41860e;
 
   &:before{
     position: absolute;
     content: '';
-    left: 2px;
-    top: 2px;
-    right: 2px;
-    bottom: 2px;
+    left: 3px;
+    top: 3px;
+    right: 3px;
+    bottom: 3px;
     background: #eeffec;
     border-radius: 1px;
   }

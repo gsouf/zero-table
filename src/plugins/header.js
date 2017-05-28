@@ -52,6 +52,7 @@ ZeroTable.createPlugin({
                         title = columnDef.options.name;
                     }
 
+
                     var cell = tableInstance.drawer.drawCell(columnDef, null, {"skipClass": true});
                     var $cell = cell.$cell
                     cell.addRole("header");
@@ -60,7 +61,12 @@ ZeroTable.createPlugin({
                     var $title = $("<span/>");
                     $title.addClass("zt-header-col-title");
                     $cell.append($title);
-                    $title.html(title);
+
+                    if(typeof title === 'function'){
+                        title($title, tableInstance);
+                    } else {
+                        $title.html(title);
+                    }
 
                     var $order = $("<span/>");
                     $order.addClass("zt-header-col-order");

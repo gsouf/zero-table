@@ -6,7 +6,7 @@ ZeroTable.Bindable = function(){};
 
 ZeroTable.Bindable.prototype={
 
-    bind : function(what, how){ 
+    bind : function(what, how){
 
         if(!this.bindable_bounds){
             this.bindable_bounds = {};
@@ -18,6 +18,13 @@ ZeroTable.Bindable.prototype={
 
         this.bindable_bounds[what].push(how);
 
+    },
+
+    bindMultiple:function(names, how){
+        names = names.split(' ');
+        for(var i = 0; i<names.length; i++){
+            this.bind(names[i], how);
+        }
     },
 
     fire : function(what, params){
@@ -68,6 +75,7 @@ ZeroTable.Bindable.prototype={
 
 ZeroTable.Bindable.extends = function (what){
 
+    what.prototype.bindMultiple = ZeroTable.Bindable.prototype.bindMultiple;
     what.prototype.bind    = ZeroTable.Bindable.prototype.bind;
     what.prototype.on      = ZeroTable.Bindable.prototype.bind;
 
