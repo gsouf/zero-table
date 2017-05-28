@@ -292,6 +292,12 @@ ZeroTable.createPlugin({
                 return selection;
             },
 
+
+            getVisibleSelectedRows: function(){
+                var selection = [];
+                return this.$table.find(".zt-table-tr.zt-data-row.zt-selected");
+            },
+
             countVisibleSelection: function () {
                 return this.getVisibleSelection().length;
             },
