@@ -27,8 +27,8 @@ ZeroTable.createPlugin({
         },
 
         afterDrawRows: function(e){
-            if(this.plugin.getOption("keepSelection") == true) {
-                if ( ! e.tableInstance.table.idProperties > 0) {
+            if(this.plugin.getOption("keepSelection", e.tableInstance)) {
+                if ( !e.tableInstance.table.idProperties  || e.tableInstance.table.idProperties.length === 0) {
                     throw "Cannot enable keepSelection feature. table.idProperties was not specified";
                 }
 
@@ -74,7 +74,7 @@ ZeroTable.createPlugin({
 
             // check if we already reached the max selection
             var maxSelection = this.getOption("maxSelection", tableInstance);
-            if(maxSelection == 0){
+            if(maxSelection === 0){
                 return false;
             }
 
@@ -227,39 +227,38 @@ ZeroTable.createPlugin({
             internalSelection: {},
             lastSelection: null,
 
-            "getSelection": function () {
-                var selection = [];
+            getSelection: function () {
 
                 if(plugin.getOption("keepSelection", this)){
+                    var selection = [];
                     ZeroTable.foreach(this.internalSelection, function(item){
                         selection.push(item);
-                    })
+                    });
+                    return selection;
                 }else{
-
+                    return this.getVisibleSelection();
                 }
-
-                return selection;
             },
 
-            "countSelection": function () {
+            countSelection: function () {
                 return this.getSelection().length;
             },
 
             getVisibleSelection: function(){
                 var selection = [];
-                this.tableInstance.$table.find(".zt-table-tr.zt-data-row").each(function(i,item){
+                this.$table.find(".zt-table-tr.zt-data-row.zt-selected").each(function(i,item){
                     var $row = $(item);
                     selection.push($row.data("dataSet"));
                 });
                 return selection;
             },
 
-            "countVisibleSelection": function () {
+            countVisibleSelection: function () {
                 return this.getVisibleSelection().length;
             },
 
 
-            "countHiddenSelection": function(){
+            countHiddenSelection: function(){
                 return this.countSelection() - this.countVisibleSelection();
             },
 
