@@ -4,9 +4,16 @@ ZeroTable.createPlugin({
         "updateDelay" : 5
     },
     "optionOverrides" : {},
+
+
+
     "listen" : {
         "onClearTable" : function(e){
             e.$table.find(".zt-table-header").remove();
+        },
+
+        "onInitialize": function(e){
+            e.tableInstance.headerDrawer = new ZeroTable.Plugin.TableBodyMode.Table();
         },
 
         "onDrawTable": function(e) {
@@ -53,7 +60,7 @@ ZeroTable.createPlugin({
                     }
 
 
-                    var cell = tableInstance.drawer.drawCell(columnDef, null, {"skipClass": true});
+                    var cell = tableInstance.headerDrawer.drawCell(columnDef, null, {"skipClass": true});
                     var $cell = cell.$cell
                     cell.addRole("header");
                     $cell.addClass("zt-header-col");

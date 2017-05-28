@@ -6,6 +6,15 @@
     <link rel="stylesheet" type="text/css" href="../dist/zero-table.min.css"/>
     <script src="../bower_components/jquery/dist/jquery.js"></script>
     <script src="../dist/zero-table.min.js"></script>
+
+    <style>
+        .simpsons-grid>*{
+            background: #6AB7E1;
+            font-weight: bold;
+            color: #FFD20C;
+        }
+    </style>
+
 </head>
 <body>
 <div id="table" style="height:200px;"></div>
@@ -20,6 +29,10 @@
 <button id="showSelection">
     show selection (console)
 </button>
+
+<button id="changeBodyMode">
+    change body mode
+</button>
 <script>
     $(function(){
         var config = {
@@ -31,6 +44,13 @@
             keepSelection: true,
 
             idProperties: ['firstname'],
+
+            gridItemRender: function(dataRow, $row){
+                $row.append(dataRow.firstname);
+            },
+
+            gridClass: 'simpsons-grid',
+
 
             columns: [
                 ZeroTable.Column.check(),
@@ -84,6 +104,16 @@
         })
         $('#countSelection').on('click', function(){
             console.log(tableInstance.countSelection());
+        })
+        $('#changeBodyMode').on('click', function(){
+            var current = tableInstance.bodyMode;
+            console.log(current);
+
+            if (current === 'table') {
+                tableInstance.changeBodyMode('grid');
+            } else {
+                tableInstance.changeBodyMode('table');
+            }
         })
 
 

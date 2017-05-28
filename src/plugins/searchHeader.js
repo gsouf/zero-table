@@ -75,7 +75,7 @@ ZeroTable.createPlugin({
 
             ZeroTable.foreach(tableInstance.table.columns, function(columnDef){
                 if(columnDef.options.visible){
-                    var cell = tableInstance.drawer.drawCell(columnDef, null, {"skipClass": true});
+                    var cell = tableInstance.headerDrawer.drawCell(columnDef, null, {"skipClass": true});
                     var $cell = cell.$cell;
                     cell.addRole("header");
                     $cell.addClass("zt-header-col");

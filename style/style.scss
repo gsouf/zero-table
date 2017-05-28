@@ -284,4 +284,21 @@
   }
 }
 
+
+// Grid table
+
+.zt-grid-body{
+  display: flex;
+}
+
+.zt-table-grid-item{
+  display: inline-block;
+  margin: 5px;
+  border: 1px solid #DDD;
+  padding: 3px;
+}
+
+
+
+
 @import "zt-paginator";

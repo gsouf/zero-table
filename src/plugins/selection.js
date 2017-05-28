@@ -26,14 +26,13 @@ ZeroTable.createPlugin({
             }
         },
 
-        afterDrawRows: function(e){
+        afterDrawItems: function(e){
             if(this.plugin.getOption("keepSelection", e.tableInstance)) {
                 if ( !e.tableInstance.table.idProperties  || e.tableInstance.table.idProperties.length === 0) {
                     throw "Cannot enable keepSelection feature. table.idProperties was not specified";
                 }
 
                 this.plugin.__restoreSelection(e.tableInstance);
-
             }
         },
 
@@ -53,7 +52,7 @@ ZeroTable.createPlugin({
 
             var self = this;
 
-            tableInstance.$table.find(".zt-table-tr.zt-data-row").each(function(i,item){
+            tableInstance.$table.find(".zt-data-row").each(function(i,item){
                 var $row = $(item);
                 var id = tableInstance.table.getRowId($row);
 
@@ -91,7 +90,7 @@ ZeroTable.createPlugin({
                     var last  = lastIndex > clickIndex ? lastIndex  : clickIndex;
 
                     for(var i = first ; i <= last ; i++){
-                        var $curRow = tableInstance.$table.find(".zt-table-tr").eq(i);
+                        var $curRow = tableInstance.$table.find(".zt-data-row").eq(i);
                         if(this.selectRow(tableInstance, $curRow, mode)){
                             changed = true;
                         }
@@ -285,7 +284,7 @@ ZeroTable.createPlugin({
 
             getVisibleSelection: function(){
                 var selection = [];
-                this.$table.find(".zt-table-tr.zt-data-row.zt-selected").each(function(i,item){
+                this.$table.find(".zt-data-row.zt-selected").each(function(i,item){
                     var $row = $(item);
                     selection.push($row.data("dataSet"));
                 });
@@ -295,7 +294,7 @@ ZeroTable.createPlugin({
 
             getVisibleSelectedRows: function(){
                 var selection = [];
-                return this.$table.find(".zt-table-tr.zt-data-row.zt-selected");
+                return this.$table.find(".zt-data-row.zt-selected");
             },
 
             countVisibleSelection: function () {

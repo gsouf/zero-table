@@ -5,19 +5,35 @@
 ZeroTable.createPlugin({
     "name" : "core.tableBody",
     "defaultOptions" : {
-        "rowClass" : null
+        "bodyMode" : 'table'
     },
     "optionOverrides" : {
-        "rowClass" : "rowClass"
+        "bodyMode" : "bodyMode"
     },
+
+    "init": function(){
+        this.availableBodyModes = {
+            'table': new ZeroTable.Plugin.TableBodyMode.Table(),
+            'grid': new ZeroTable.Plugin.TableBodyMode.Grid()
+        };
+    },
+
     "listen" : {
+
+        onInitialize: function(e){
+            var bodyMode = this.plugin.getOption('bodyMode', e.tableInstance);
+            if(!this.plugin.availableBodyModes.hasOwnProperty(bodyMode)){
+                throw 'Invalide body mode :' + bodyMode;
+            }
+            e.tableInstance.bodyDrawer = this.plugin.availableBodyModes[bodyMode];
+            e.tableInstance.bodyMode = bodyMode;
+        },
 
         onClearTable: function(e){
             e.$table.find(".zt-table-wrapper .zt-table-table .zt-table-tbody").remove();
         },
 
         onDrawTable: function(e) {
-
             // TODO this should be in init
             var $tbody = $("<div/>");
             $tbody.addClass("zt-table-tbody");
@@ -25,32 +41,42 @@ ZeroTable.createPlugin({
             e.tableInstance.$tableBody = $tbody;
         },
 
-        dataUpdated: function(e){
+        bodyModeChanged: function(e){
+            // TODO: make a tbodyInitialized event
+            e.tableInstance.$tableBody.removeClass();
+            e.tableInstance.$tableBody.addClass('zt-table-tbody');
+            e.tableInstance.bodyDrawer.prepareTableBody(e.tableInstance.$tableBody, e.tableInstance);
+        },
+
+        'dataUpdated,bodyModeChanged': function(e){
 
             var tableInstance = e.tableInstance;
-            var $table = e.$table;
+            var $table = tableInstance.$table;
             var $tbody = $table.find('.zt-table-tbody');
+            var data = tableInstance.dataConnector.getData();
 
             $tbody.empty();
 
-            tableInstance.tableEvent("beforeDrawRows", e);
+            tableInstance.tableEvent("beforeDrawItems", e);
 
-            ZeroTable.foreach(e.data, function(dataRow){
+            ZeroTable.foreach(data, function(dataRow){
 
-                // E:beforeDrawRow
-                tableInstance.tableEvent("beforeDrawRow", { "$table" : $table, "dataRow" : dataRow });
 
-                var $row = tableInstance.drawer.drawRow($table,{"role" : "data"});
-                $row.addClass("zt-data-row");
+                var $item = tableInstance.bodyDrawer.drawRow(tableInstance, {"role" : "data"});
+                $item.addClass("zt-data-row");
 
-                tableInstance.refreshRow($row, dataRow);
+                tableInstance.refreshRow($item, dataRow);
 
-                $tbody.append($row);
+                // E:afterDrawItem
+                tableInstance.tableEvent("afterDrawItem", {"dataRow" : dataRow, "$item" : $item });
+
+                $tbody.append($item);
             });
 
-            // E:afterDrawRows
-            tableInstance.tableEvent("afterDrawRows", e);
-        }
+            // E:afterDrawItems
+            tableInstance.tableEvent("afterDrawItems", e);
+        },
+
 
 
 
@@ -59,12 +85,6 @@ ZeroTable.createPlugin({
     "tableKeys" : function(plugin){
         return {
             refreshRow: function($row, dataRow){
-
-                // Remove custom class because they depend on the data
-                var customClass = $row.attr('data-zt-custom-class');
-                if(customClass){
-                    $row.removeClass(customClass);
-                }
 
                 // Empty the row and build it again
                 $row.empty();
@@ -75,47 +95,18 @@ ZeroTable.createPlugin({
                 // Persist the dataset
                 $row.data("dataSet", dataRow);
 
-                // rowClass handler :
-                // option rowClass allows to define a callback that can put class for a row depending on the row data
-                var rowClassHandler = plugin.getOption("rowClass", tableInstance);
-                if(rowClassHandler !== null && rowClassHandler !== false && typeof rowClassHandler !== "function"){
-                    throw "bad type for 'rowClass' option. It should be null or a function";
+                tableInstance.bodyDrawer.drawInnerRow(tableInstance, dataRow, $row);
+            },
+
+            changeBodyMode: function(newBodyMode) {
+                if(!plugin.availableBodyModes.hasOwnProperty(newBodyMode)){
+                    throw 'Invalide body mode :' + newBodyMode;
                 }
+                this.bodyDrawer = plugin.availableBodyModes[newBodyMode];
+                this.bodyMode = newBodyMode;
 
-                if(rowClassHandler){
-                    var rowClass = rowClassHandler(dataRow);
-                    if(rowClass){
-                        $row.addClass(rowClass);
-                        $row.attr('data-zt-custom-class', rowClass);
-                    }
-                }
-
-
-                // Draw cells
-                ZeroTable.foreach(tableInstance.table.columns, function(columnDef){
-                    if(columnDef.options.visible){
-
-                        // E:beforeDrawCell
-                        tableInstance.tableEvent("beforeDrawCell", { "$table" : $table, "dataRow" : dataRow, "columnDef" : columnDef, "$row" : $row });
-
-                        var cell = tableInstance.drawer.drawCell(columnDef, "");
-                        cell.addRole("data");
-
-                        // E:afterDrawCell
-                        tableInstance.tableEvent("afterDrawCell", {
-                            "$table" : $table,
-                            "dataRow" : dataRow,
-                            "columnDef" : columnDef,
-                            "$row" : $row,
-                            "cell" : cell
-                        });
-
-                        $row.append(cell.$cell);
-                    }
-                });
-
-                // E:afterDrawRow
-                tableInstance.tableEvent("afterDrawRow", { "$table" : $table, "dataRow" : dataRow, "$row" : $row });
+                // E:bodyModeChanged
+                this.tableEvent("bodyModeChanged", {});
             },
 
             getTableBodyElement: function(){

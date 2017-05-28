@@ -38,6 +38,9 @@
     "src/ZeroTable/Plugin/SearchHeader/Searcher.js",
     "src/ZeroTable/Plugin/SearchHeader/String.js",
 
+    "src/ZeroTable/Plugin/TableBodyMode/Table.js",
+    "src/ZeroTable/Plugin/TableBodyMode/Grid.js",
+
     "src/ZeroTable/Tools/*",
 
     "src/plugins/*"
