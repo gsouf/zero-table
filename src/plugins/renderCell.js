@@ -25,6 +25,21 @@ ZeroTable.createPlugin({
                     value = this.plugin.renderParse(e.dataRow, e.columnDef.getDataIndex(), e.columnDef.options.render, e.tableInstance);
                 }
 
+                if(e.columnDef.options.align){
+                    switch(e.columnDef.options.align){
+                        case "left":
+                            e.cell.$cell.css({'text-align': 'left'});
+                            break;
+                        case "right":
+                            e.cell.$cell.css({'text-align': 'right'});
+                            break;
+                        case "center":
+                            e.cell.$cell.css({'text-align': 'center'});
+                            break;
+                    }
+                }
+
+
                 e.cell.$cell.html(value);
             }
 
