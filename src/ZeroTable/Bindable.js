@@ -47,14 +47,19 @@ ZeroTable.Bindable.prototype={
 
 
         if(this.bindable_forwards){
+
+            var properties = {
+                'originalEvent': event
+            };
+
             for(var i in this.bindable_forwards){
                 var namespacedEvent = what;
                 if(this.bindable_forwards[i].key){
                     namespacedEvent = this.bindable_forwards[i].key + "." + what;
                 }
-                this.bindable_forwards[i].item.fire(namespacedEvent, params);
-            }
 
+                this.bindable_forwards[i].item.fire(namespacedEvent, [properties]);
+            }
         }
 
         return event;

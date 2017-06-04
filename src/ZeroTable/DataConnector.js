@@ -5,7 +5,7 @@ ZeroTable.DataConnector = function(dataAdapter, options){
 
     ZeroTable.extend(this,[
         {
-            order   : {}, // columnName : "asc"/"desc"
+            order   : [], // [columnName: "name", direction:  "asc"/"desc"]
             filters : {},
             limit   : 50,
             offset  : 0,
@@ -27,14 +27,45 @@ ZeroTable.DataConnector = function(dataAdapter, options){
 
 ZeroTable.DataConnector.prototype = {
 
-    setOrder : function(order){
-        this.order = order;
+    setOrder : function(column, direction){
+        var index = this.getOrderIndex(column);
+        if(null !== index){
+            this.order[index].direction = direction;
+        } else {
+            this.order.push({
+                'columnName': column,
+                'direction': direction
+            });
+        }
+
         this.fire("orderChange",[this]);
     },
 
     clearOrder : function(){
-        this.order = order;
+        this.order = [];
         this.fire("orderChange",[this]);
+    },
+
+    getOrder : function(name){
+        if (name) {
+            for(var i = 0; i < this.order.length; i++){
+                if(this.order[i].columnName === name){
+                    return this.order[i];
+                }
+            }
+            return null;
+        } else {
+            return this.order;
+        }
+    },
+
+    getOrderIndex : function(name){
+        for(var i = 0; i < this.order.length; i++){
+            if(this.order[i].columnName === name){
+                return i;
+            }
+        }
+        return null;
     },
 
     filterColumn: function(columnName, value){
@@ -47,14 +78,6 @@ ZeroTable.DataConnector.prototype = {
 
     getFilters: function(){
         return this.filters;
-    },
-
-    getOrder : function(name){
-        if (name) {
-            return this.order[name];
-        } else {
-            return this.order;
-        }
     },
 
     setOffset : function(offset){

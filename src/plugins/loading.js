@@ -8,7 +8,7 @@ ZeroTable.createPlugin({
     "optionOverrides" : {},
     "listen" : {
 
-        "data.loading": function(dataConnector) {
+        "data.loading": function(e) {
             var tableInstance = this.context;
 
             var $loader = $("<div/>");

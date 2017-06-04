@@ -67,11 +67,15 @@ ZeroTable.extendClass(ZeroTable.Data.DataArray, ZeroTable.Data.DataAdapter, {
                 var sortRes = 0;
                 var order = options.order;
                 ZeroTable.foreach(order, function (item, key) {
-                    var type = ("asc" === item ? -1 : 1);
-                    if (a[key] < b[key]) {
+
+                    var direction = item.direction;
+                    var column = item.columnName;
+
+                    var type = ("asc" === direction ? -1 : 1);
+                    if (a[column] < b[column]) {
                         sortRes = type;
                         return false;
-                    } else if (a[key] != b[key]) {
+                    } else if (a[column] !== b[column]) {
                         sortRes = type * -1;
                         return false;
                     }

@@ -55,11 +55,13 @@
             columns: [
                 ZeroTable.Column.check(),
                 {
-                    name: "firstname"
+                    name: "firstname",
+                    orderable: true
                 },
                 {
                     name: "lastname",
                     searcher: "string",
+                    orderable: true,
                     searcherOptions: {
                         contains: true
                     },
@@ -91,6 +93,10 @@
             {
                 firstname: "marge",
                 lastname : "simpsons"
+            },
+            {
+                firstname: "ned",
+                lastname : "flanders"
             }
         ];
 
