@@ -12,7 +12,7 @@ ZeroTable.Plugin.SearchHeader.Searcher = function(options){
 
 
     this.$drawElement = null;
-    this.$cloneList = null;
+    this.$cloneList = $();
 
 };
 
