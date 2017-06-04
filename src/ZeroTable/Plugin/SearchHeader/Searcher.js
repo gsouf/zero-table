@@ -69,6 +69,10 @@ ZeroTable.Plugin.SearchHeader.Searcher.prototype = {
         throw "__empty() method not implemented";
     },
 
+    __createFilterValue: function(value){
+        throw "__createFilterValue() method not implemented";
+    },
+
     __bindEvents: function($elm){
         throw "__bindEvents() method not implemented";
     },

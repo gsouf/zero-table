@@ -72,6 +72,12 @@ ZeroTable.createPlugin({
 
             getSearcher: function(searcherName){
                 return this.searcherInstances[searcherName];
+            },
+
+            filterColumn: function(columnName, value){
+                var searcher = this.getSearcher(columnName);
+                var filterValue = searcher.__createFilterValue(value);
+                searcher.update(filterValue);
             }
         }
 

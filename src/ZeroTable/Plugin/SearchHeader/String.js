@@ -24,25 +24,8 @@ ZeroTable.extendClass(ZeroTable.Plugin.SearchHeader.String, ZeroTable.Plugin.Sea
         var $input = $elm.find("input");
 
         $input.on('input', function(){
-
             var value = $input.val();
-            if("" == value){
-                self.update(null);
-            } else {
-                if(self.options.contains){
-                    self.update({
-                        type : "contains",
-                        containsRight: self.options.containsRight,
-                        containsLeft: self.options.containsLeft,
-                        value: value
-                    });
-                } else {
-                    self.update({
-                        "type" : "eq",
-                        "value": value
-                    });
-                }
-            }
+            self.update(self.__createFilterValue(value));
         });
 
         $input.on('focus', function(){
@@ -53,6 +36,26 @@ ZeroTable.extendClass(ZeroTable.Plugin.SearchHeader.String, ZeroTable.Plugin.Sea
             $input.removeClass('zt-is-editing');
         });
 
+    },
+
+    __createFilterValue: function(value){
+        if("" === value){
+            return null;
+        } else {
+            if(this.options.contains){
+                return {
+                    type : "contains",
+                    containsRight: this.options.containsRight,
+                    containsLeft: this.options.containsLeft,
+                    value: value
+                };
+            } else {
+                return {
+                    "type" : "eq",
+                    "value": value
+                };
+            }
+        }
     },
 
     __updateElements: function($elements, value){
