@@ -11,4 +11,49 @@
   .zt-title{
     font-size: 0.8em;
   }
+
+  .zt-add{
+    position: relative;
+    display: inline-block;
+  }
+
+  .zt-add-btn{
+    font-weight: bold;
+    font-size: 0.8em;
+    cursor: pointer;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .zt-add-list{
+    list-style: none;
+    padding: 1px;
+    background: #FFF;
+    border: 1px solid #DDD;
+    box-shadow: 0px 0px 10px 0px #656565;
+
+    position: absolute;
+    left: 0;
+    top:0;
+    display: none;
+
+    &.zt-show{
+      display: block;
+    }
+
+    li{
+      font-size: 0.9em;
+      cursor: default;
+      padding: 5px;
+      &:hover{
+        background: #F5F5F5;
+      }
+
+      &.zt-disabled{
+        background: transparent !important;
+        color: #999 !important;
+      }
+    }
+
+  }
 }
