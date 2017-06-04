@@ -104,6 +104,7 @@
         $("#table").append(tableInstance.draw());
 
         $("#tableTools").append(new ZeroTable.Tools.Paginator(tableInstance).draw());
+        $("#tableTools").append(new ZeroTable.Tools.SortDetails(tableInstance).draw());
 
 
         console.log(tableInstance.getSelection());

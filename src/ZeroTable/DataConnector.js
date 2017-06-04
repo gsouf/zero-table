@@ -46,6 +46,14 @@ ZeroTable.DataConnector.prototype = {
         this.fire("orderChange",[this]);
     },
 
+    removeOrder: function(column){
+        var index = this.getOrderIndex(column);
+        if(null !== index){
+            this.order.splice(index, 1);
+        }
+        this.fire("orderChange",[this]);
+    },
+
     getOrder : function(name){
         if (name) {
             for(var i = 0; i < this.order.length; i++){

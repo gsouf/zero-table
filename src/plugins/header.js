@@ -87,8 +87,6 @@ ZeroTable.createPlugin({
                     delete orderPerColumn[columnName];
                 });
 
-                console.log(orderPerColumn);
-
                 ZeroTable.foreach(orderPerColumn, function(direction, columnName){
                     var $col = $header.find('.zt-header-col[data-zt-column="' + columnName + '"]');
                     $col.addClass('zt-column-ordered zt-column-order-' + direction);
