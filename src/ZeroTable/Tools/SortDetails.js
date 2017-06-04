@@ -31,7 +31,7 @@ ZeroTable.Tools.SortDetails = function(table, options){
                 var column = table.table.getColumnDefinition(item.columnName);
 
                 // Label
-                var name = (column && column.header) ? column.header : item.columnName;
+                var name = (column && column.options.header) ? column.options.header : item.columnName;
 
                 // order button
                 var $orderItem = $('<div class="zt-sort-item">' + name + '</div>');
