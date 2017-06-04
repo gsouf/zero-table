@@ -68,6 +68,7 @@ ZeroTable.Tools.SearchDetails = function(table, options){
 
         var yPos = $addList[0].getBoundingClientRect().top;
         yPos += $addList[0].offsetHeight;
+        yPos += 10;
 
         if(yPos > window.innerHeight) {
             $addList.css({top: window.innerHeight - yPos})
