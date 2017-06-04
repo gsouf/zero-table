@@ -19,11 +19,8 @@ ZeroTable.Plugin.SearchHeader.Searcher = function(options){
 ZeroTable.Plugin.SearchHeader.Searcher.prototype = {
 
 
-    "draw": function(){
-        if(!this.$drawElement){
-            this.$drawElement = this.__draw();
-            this.$cloneList = this.$drawElement;
-        }
+    draw: function(){
+        this._initializeDraw();
 
         var $cloneElement = this.$drawElement.clone();
         this.$cloneList = this.$cloneList.add($cloneElement);
@@ -33,7 +30,16 @@ ZeroTable.Plugin.SearchHeader.Searcher.prototype = {
         return $cloneElement;
     },
 
+    _initializeDraw: function(){
+        if(!this.$drawElement){
+            this.$drawElement = this.__draw();
+            this.$cloneList = this.$drawElement;
+        }
+    },
+
     update : function(value, silently){
+        this._initializeDraw();
+
         if(value === this.value)
             return;
         this.__updateElements(this.$cloneList, value);

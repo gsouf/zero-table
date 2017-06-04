@@ -58,8 +58,8 @@ ZeroTable.extendClass(ZeroTable.Data.DataArray, ZeroTable.Data.DataAdapter, {
         var data = this.data.slice(0);
 
         if(options.filters && Object.keys(options.filters).length > 0){
-            throw "NOT IMPLEMENTED YET";
-            // TODO
+            console.warn("DATA ARRAY FILTERS ARE NOT IMPLEMENTED YET");
+            // // TODO
         }
 
         if(options.order) {
