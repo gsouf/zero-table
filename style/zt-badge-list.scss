@@ -1,0 +1,40 @@
+.zt-badge-list{
+
+  .zt-badge{
+    display: inline-block;
+    background: #EEE;
+    margin: 1px 4px;
+    font-size: 0.8em;
+    padding: 2px 5px;
+    border: 1px solid #CCC;
+
+    .zt-badge-delete{
+      content: "\00d7";
+      display: inline-block;
+      margin-left: 5px;
+      background: #666;
+      color: #EEE;
+      font-size: 9px;
+      line-height: 9px;
+      padding: 1px 2px;
+      position: relative;
+      top: -1px;
+      opacity: 0;
+      transition: opacity 200ms;
+      cursor: pointer;
+
+      &:hover{
+        color: #F00;
+      }
+    }
+
+    &:hover{
+      .zt-badge-delete{
+        opacity: 1;
+      }
+    }
+
+  }
+
+
+}

@@ -16,6 +16,7 @@ ZeroTable.Table = function(options){
         this.plugins = [
             "core.tableBody",
             "core.header",
+            "core.search",
             "core.sizing",
             "core.renderCell",
             "core.clickEvents",

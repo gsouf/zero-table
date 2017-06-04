@@ -5,11 +5,6 @@
   }
 
   .zt-sort-item{
-    display: inline-block;
-    margin: 1px 4px;
-    font-size: 0.8em;
-    background: #EEE;
-    padding: 2px 5px;
     cursor: default;
 
     &:before{
@@ -23,31 +18,7 @@
       margin-right: 3px;
     }
 
-    .zt-delete{
-      content: "\00d7";
-      display: inline-block;
-      margin-left: 5px;
-      background: #666;
-      color: #EEE;
-      font-size: 9px;
-      line-height: 9px;
-      padding: 1px 2px;
-      position: relative;
-      top: -1px;
-      opacity: 0;
-      transition: opacity 200ms;
-      cursor: pointer;
 
-      &:hover{
-        color: #F00;
-      }
-    }
-
-    &:hover{
-      .zt-delete{
-        opacity: 1;
-      }
-    }
 
 
     &.zt-order-asc:before{

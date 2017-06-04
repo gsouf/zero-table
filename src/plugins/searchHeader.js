@@ -1,27 +1,9 @@
 ZeroTable.createPlugin({
     "name" : "core.searchHeader",
     "defaultOptions" : {
-        drawHeaders: true,
-        searcherFactory: null,
-        delay: 500
+        drawHeaders: true
     },
     "optionOverrides" : {},
-    "init" : function(){
-
-        if(!this.getOption("searcherFactory")){
-            this.setOption("searcherFactory", new ZeroTable.Plugin.SearchHeader.SearcherFactory({
-
-                "searchers" : {
-                    "string": ZeroTable.Plugin.SearchHeader.String,
-                    "range": ZeroTable.Plugin.SearchHeader.String
-                }
-
-            }));
-        }
-
-        this.searchers = {};
-
-    },
     "listen" : {
 
         "afterDrawHeader": function(e) {
@@ -36,38 +18,12 @@ ZeroTable.createPlugin({
 
                 this.plugin.drawHeaderColumns($searchHeaderRow, e.tableInstance);
             }
-        },
-
-        "onInitialize": function(e){
-            this.plugin.initSearchers(e.tableInstance);
         }
 
     },
     "pluginPrototype" : {
 
-        initSearchers: function(tableInstance){
 
-            var self = this;
-
-            if(!self.getOption("searcherFactory")){
-                throw "invalid searcher factory";
-            }
-
-            ZeroTable.foreach(tableInstance.table.columns, function(columnDef){
-                if(columnDef.options.searcher){
-                    
-                    var searcher = self.getOption("searcherFactory").build(columnDef.options.searcher, columnDef.options.searcherOptions);
-
-                    tableInstance.__searchHeaderSearchers[columnDef.options.name] = searcher;
-                    searcher.on('valueChanged',function(value, searcher){
-                        tableInstance.dataConnector.filterColumn(columnDef.options.name, value);
-                        tableInstance.dataConnector.update(self.getOption("delay"));
-                    });
-
-                }
-            });
-
-        },
 
         drawHeaderColumns: function($row, tableInstance){
 
@@ -91,8 +47,10 @@ ZeroTable.createPlugin({
 
                     $row.append($row, $cell);
 
-                    if(tableInstance.__searchHeaderSearchers[columnDef.options.name]){
-                        $cell.append(tableInstance.__searchHeaderSearchers[columnDef.options.name].draw());
+                    var searcher = tableInstance.getSearcher(columnDef.options.name);
+
+                    if(searcher){
+                        $cell.append(searcher.draw());
                     }
 
 

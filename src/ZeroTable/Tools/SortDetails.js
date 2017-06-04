@@ -11,10 +11,8 @@ ZeroTable.Tools.SortDetails = function(table, options){
         options
     ]);
 
-    console.log(this.options);
-
     this.table = table;
-    this.$item = $('<div class="zt-sort-details"></div>');
+    this.$item = $('<div class="zt-sort-details zt-badge-list"></div>');
 
     var self = this;
 
@@ -34,11 +32,11 @@ ZeroTable.Tools.SortDetails = function(table, options){
                 var name = (column && column.options.header) ? column.options.header : item.columnName;
 
                 // order button
-                var $orderItem = $('<div class="zt-sort-item">' + name + '</div>');
+                var $orderItem = $('<div class="zt-sort-item zt-badge">' + name + '</div>');
                 $orderItem.addClass('zt-order-' + item.direction);
 
                 // delete button
-                var $delete = $('<div class="zt-delete">&times;</div>');
+                var $delete = $('<div class="zt-badge-delete">&times;</div>');
                 $orderItem.append($delete);
 
                 // Add too the list

@@ -78,10 +78,36 @@ ZeroTable.DataConnector.prototype = {
 
     filterColumn: function(columnName, value){
         if(null === value || undefined === value){
-            delete this.filters[columnName];
+            if(columnName in this.filters){
+                delete this.filters[columnName];
+                this.fire("filterRemoved",[{
+                    filterName: columnName
+                }]);
+            }
         }else{
+
+            var exist = columnName in this.filters;
+
             this.filters[columnName] = value;
+
+            if(!exist){
+                this.fire("filterAdded",[{
+                    filterName: columnName
+                }]);
+            } else {
+                this.fire("filterUpdated",[{
+                    filterName: columnName
+                }]);
+            }
+
         }
+        this.fire("filtersChange",[]);
+    },
+
+    clearFilters: function(){
+        this.filters = {};
+        this.fire("filtersCleared",[]);
+        this.fire("filtersChange",[]);
     },
 
     getFilters: function(){
