@@ -11,12 +11,18 @@ ZeroTable.createPlugin({
         "data.loading": function(e) {
             var tableInstance = this.context;
 
-            var $loader = $("<div/>");
-            $loader.addClass("zt-loading");
+            var $loader = $("<div class='zt-loading' />");
+            $loader.addClass("");
             tableInstance.$table.find(".zt-wrapper").append($loader);
 
-            var $spinner = $("<div/>");
-            $spinner.addClass("zt-loading-spinner");
+
+            var $spinner = $(
+                '<div class="zt-dot-spinner">' +
+                    '<div></div>' +
+                    '<div></div>' +
+                    '<div></div>' +
+                '</div>'
+            );
             $loader.append($spinner);
 
         },
