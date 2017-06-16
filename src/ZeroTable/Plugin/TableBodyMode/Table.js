@@ -65,6 +65,18 @@ ZeroTable.Plugin.TableBodyMode.Table.prototype = {
                 var cell = self.drawCell(columnDef, "");
                 cell.addRole("data");
 
+                if(columnDef.options.tooltip){
+                    // make it in a plugin ?
+
+                    console.log(columnDef.options.tooltip);
+                    if(typeof columnDef.options.tooltip == 'function'){
+                        cell.$cell.attr('title', columnDef.options.tooltip(dataRow))
+                    } else {
+                        cell.$cell.attr('title', columnDef.options.tooltip);
+                    }
+                }
+
+
                 // E:afterDrawCell
                 tableInstance.tableEvent("afterDrawCell", {
                     "$table" : tableInstance.$table,
