@@ -164,6 +164,7 @@
         margin: 0;
         padding: 2px;
         border-right: 1px solid #F1F1F1;
+        transition: background 200ms;
         height: 100%;
         box-sizing: border-box;
         white-space: nowrap;
@@ -179,6 +180,10 @@
         border-bottom: none; }
       .zt-wrapper .zt-table-table .zt-table-tr .zt-table-td-fill {
         width: 100%; }
+      .zt-wrapper .zt-table-table .zt-table-tr .zt-cell-has-action {
+        cursor: pointer; }
+        .zt-wrapper .zt-table-table .zt-table-tr .zt-cell-has-action:hover {
+          background: #fff0d1; }
 
 .zt-unhighlightable {
   -webkit-touch-callout: none;

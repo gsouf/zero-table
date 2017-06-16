@@ -20,6 +20,7 @@ ZeroTable.Table = function(options){
             "core.sizing",
             "core.renderCell",
             "core.clickEvents",
+            "core.actionColumn",
             "core.pagination",
             "core.selection",
             "core.loading",

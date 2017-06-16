@@ -36,20 +36,22 @@ ZeroTable.createPlugin({
                 }
 
  
-                e.tableInstance.tableEvent("cellClick", {
+                var eData = e.tableInstance.tableEvent("cellClick", {
                     "$cell"  : e.$cell,
                     "$row"   : e.$row,
                     "$table" : e.$table,
                     "event"  : clickEvent,
-                    "tableInstance" : e.tableInstance
+                    "columnDef" : e.columnDef
                 });
 
-                e.tableInstance.tableEvent("rowClick", {
-                    "cell"  : e.cell,
-                    "$row"   : e.$row,
-                    "$table" : e.$table,
-                    "event"  : clickEvent
-                });
+                if(!eData.interrupted()){
+                    e.tableInstance.tableEvent("rowClick", {
+                        "cell"  : e.cell,
+                        "$row"   : e.$row,
+                        "$table" : e.$table,
+                        "event"  : clickEvent
+                    });
+                }
             });
         }
     },

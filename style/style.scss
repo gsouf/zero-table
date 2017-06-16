@@ -247,6 +247,7 @@
         padding: 2px;
         border-right: 1px solid #F1F1F1;
 
+        transition: background 200ms;
 
         height:100%;
         box-sizing: border-box;
@@ -259,7 +260,6 @@
         &:first-child{
           border-left: 1px solid #F1F1F1;
         }
-
       }
       &:last-child .zt-table-td {
         border-bottom: none;
@@ -267,6 +267,13 @@
 
       .zt-table-td-fill{
         width: 100%;
+      }
+
+      .zt-cell-has-action{
+        cursor: pointer;
+        &:hover{
+          background: #fff0d1;
+        }
       }
 
 

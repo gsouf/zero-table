@@ -92,6 +92,7 @@ module.exports = function(grunt) {
 
 
     grunt.registerTask('default', ['newer:uglify','newer:sass']);
+    grunt.registerTask('dist', ['uglify','sass']);
     grunt.registerTask('dev', ['dev-compile','karma:unit:start','watch']);
     grunt.registerTask('dev-compile', ['newer:uglify','newer:sass', 'copy']);
     grunt.registerTask('test', ['karma']);

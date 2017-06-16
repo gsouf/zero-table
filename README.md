@@ -114,3 +114,14 @@ If you want to contribute here are the steps to build the library :
 ```
 
 The files are generated in the directory ``build``
+
+Dist files
+----------
+
+To build dist files to be published in the repository run:
+
+
+```shell
+    npm install
+    grunt dist
+```

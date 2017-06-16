@@ -56,6 +56,7 @@ ZeroTable.createPlugin({
             }else if(typeof render == "function"){
                 value = render(set[dataName], set);
             }else if(typeof render == "string"){
+                console.log(render);
                 value = this.getOption("stringRenderer").render(render, set);
             }else{
                 throw "unknown type for render : " + typeof render;
