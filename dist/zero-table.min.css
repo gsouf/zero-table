@@ -222,6 +222,7 @@
 
 .zt-table-grid-item {
   display: inline-block;
+  vertical-align: middle;
   margin: 5px;
   border: 1px solid #DDD;
   padding: 3px; }
