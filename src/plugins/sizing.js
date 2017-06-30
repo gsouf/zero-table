@@ -43,7 +43,6 @@ ZeroTable.createPlugin({
                 width += $(this).outerWidth();
             });
             $row.width(width);
-            $table.find(".zt-wrapper").width(width);
 
         }
 
