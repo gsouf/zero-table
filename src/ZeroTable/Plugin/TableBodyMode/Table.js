@@ -68,7 +68,6 @@ ZeroTable.Plugin.TableBodyMode.Table.prototype = {
                 if(columnDef.options.tooltip){
                     // make it in a plugin ?
 
-                    console.log(columnDef.options.tooltip);
                     if(typeof columnDef.options.tooltip == 'function'){
                         cell.$cell.attr('title', columnDef.options.tooltip(dataRow))
                     } else {
