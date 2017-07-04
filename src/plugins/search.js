@@ -56,6 +56,7 @@ ZeroTable.createPlugin({
                         'valueChanged',
                         function(value){
                             tableInstance.dataConnector.filterColumn(columnDef.options.name, value);
+                            tableInstance.dataConnector.setOffset(0);
                             tableInstance.dataConnector.update(self.getOption("delay"));
                         }
                     );
