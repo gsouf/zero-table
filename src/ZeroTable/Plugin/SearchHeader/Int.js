@@ -1,20 +1,19 @@
-ZeroTable.Plugin.SearchHeader.String = function(options){
+ZeroTable.Plugin.SearchHeader.Int = function(options){
     ZeroTable.Plugin.SearchHeader.Searcher.apply(this);
     ZeroTable.extend(this.options =
         {
-            contains: false,
-            containsRight: true,
-            containsLeft: true
+            min: null,
+            max: null
         },
         [options]
     );
 };
 
-ZeroTable.extendClass(ZeroTable.Plugin.SearchHeader.String, ZeroTable.Plugin.SearchHeader.Searcher, {
+ZeroTable.extendClass(ZeroTable.Plugin.SearchHeader.Int, ZeroTable.Plugin.SearchHeader.Searcher, {
 
 
     __draw: function(){
-        var $elm = $("<div class='zt-input-wrapper'><input type='text'/></div>");
+        var $elm = $("<div class='zt-input-wrapper'><input type='number'/></div>");
         return $elm;
     },
 
@@ -42,19 +41,10 @@ ZeroTable.extendClass(ZeroTable.Plugin.SearchHeader.String, ZeroTable.Plugin.Sea
         if("" === value){
             return null;
         } else {
-            if(this.options.contains){
-                return {
-                    type : "contains",
-                    containsRight: this.options.containsRight,
-                    containsLeft: this.options.containsLeft,
-                    value: value
-                };
-            } else {
-                return {
-                    "type" : "eq",
-                    "value": value
-                };
-            }
+            return {
+                "type" : "eq",
+                "value": value
+            };
         }
     },
 

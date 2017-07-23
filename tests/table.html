@@ -61,7 +61,14 @@
                 {
                     name: "firstname",
                     orderable: true,
-                    header: 'First Name'
+                    header: 'First Name',
+                    searcher: 'select',
+                    searcherOptions: {
+                        values: {
+                            'foo': 'bar',
+                            'baz': 'qux'
+                        }
+                    }
                 },
                 {
                     name: "lastname",
@@ -75,7 +82,8 @@
                 {
                     name: "age",
                     size: '50',
-                    align: 'center'
+                    align: 'center',
+                    searcher: "int"
                 },
                 {
                     name: "foo",

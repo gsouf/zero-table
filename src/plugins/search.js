@@ -15,7 +15,8 @@ ZeroTable.createPlugin({
 
                 "searchers" : {
                     "string": ZeroTable.Plugin.SearchHeader.String,
-                    "range": ZeroTable.Plugin.SearchHeader.String
+                    "int": ZeroTable.Plugin.SearchHeader.Int,
+                    "select": ZeroTable.Plugin.SearchHeader.Select
                 }
 
             }));
