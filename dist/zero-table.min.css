@@ -120,6 +120,8 @@
               color: #DDD;
               font-weight: 100;
               font-size: 11px; }
+          .zt-wrapper .zt-table-header .zt-searchers .zt-header-col .zt-input-wrapper select {
+            width: 100%; }
     .zt-wrapper .zt-table-header .zt-header-col {
       vertical-align: middle;
       border: 1px solid #CBCBCB;
