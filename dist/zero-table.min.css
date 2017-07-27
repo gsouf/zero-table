@@ -5,7 +5,8 @@
 .zt-wrapper {
   height: 100%;
   font-size: 11px;
-  position: relative; }
+  position: relative;
+  overflow-y: auto; }
   .zt-wrapper .zt-loading {
     position: absolute;
     top: 0;
@@ -127,7 +128,7 @@
       border: 1px solid #CBCBCB;
       height: 100%; }
   .zt-wrapper .zt-table-wrapper {
-    overflow-y: auto;
+    overflow-y: visible;
     overflow-x: visible;
     position: absolute;
     top: 0;

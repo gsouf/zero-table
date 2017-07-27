@@ -17,6 +17,7 @@
   height: 100%;
   font-size: 11px;
   position: relative;
+  overflow-y: auto;
 
   .zt-loading{
     position: absolute;
@@ -192,7 +193,7 @@
 
   .zt-table-wrapper {
 
-    overflow-y: auto;
+    overflow-y: visible;
     overflow-x: visible;
 
     position: absolute;
