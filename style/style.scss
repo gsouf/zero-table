@@ -150,6 +150,7 @@
 
         .zt-input-wrapper {
 
+          display: inline-block;
           position: absolute;
           top: 2px;
           bottom: 2px;
@@ -158,6 +159,7 @@
 
           input {
 
+            display: inline-block;
             box-sizing: border-box;
             width: 100%;
             height: 100%;
@@ -309,12 +311,30 @@
   margin: auto;
   cursor: pointer;
   position: relative;
+
+}
+
+
+.zt-for-selected-only{
+  display: none;
+}
+
+
+.zt-selected{
+  .zt-for-selected-only{
+    display: inline-block;
+  }
+
+  .zt-for-unselected-only{
+    display: none;
+  }
 }
 
 .zt-selected .zt-checkbox,
 .zt-checkbox.zt-active
 {
 
+  display: inline-block;
   background: #41860e;
 
   &:before{
@@ -345,6 +365,14 @@
 }
 
 
+// zt-selection-only is used to hide characters on screen but to mae them available for selection and copy/paste
+.zt-only-for-selection{
+  display: inline-block;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  font-size: 0;
+}
 
 
 @import "zt-paginator";

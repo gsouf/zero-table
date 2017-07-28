@@ -24,7 +24,7 @@ ZeroTable.Column.check = function(name){
                 }
             });
         },
-        content: '<div class="zt-checkbox"/>',
+        content: '<div class="zt-checkbox"/><span class="zt-only-for-selection"><span class="zt-for-selected-only">1</span><span class="zt-for-unselected-only">0</span></span>',
         size: 25
     })
 };

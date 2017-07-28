@@ -29,8 +29,13 @@ ZeroTable.createPlugin({
 
             var self = this;
 
-            ZeroTable.foreach(tableInstance.table.columns, function(columnDef){
+            var colsLength = tableInstance.table.columns.length;
+
+            ZeroTable.foreach(tableInstance.table.columns, function(columnDef, i){
                 if(columnDef.options.visible){
+                    var isFirst = i === 0;
+                    var isLast  = i === colsLength - 1;
+
                     var cell = tableInstance.headerDrawer.drawCell(columnDef, null, {"skipClass": true});
                     var $cell = cell.$cell;
                     cell.addRole("header");
@@ -41,7 +46,9 @@ ZeroTable.createPlugin({
                             "$table" : tableInstance.$table,
                             "columnDef" : columnDef,
                             "$row" : $row,
-                            "cell" : cell
+                            "cell" : cell,
+                            "isFirst": isFirst,
+                            "isLast" : isLast
                         })
                     ]);
 

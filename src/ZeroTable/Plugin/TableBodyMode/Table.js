@@ -55,9 +55,14 @@ ZeroTable.Plugin.TableBodyMode.Table.prototype = {
         tableInstance.tableEvent("beforeDrawRow", { "$table" : tableInstance.$table, "dataRow" : dataRow });
 
         var self = this;
+        var colsLength = tableInstance.table.columns.length;
         // Draw cells
-        ZeroTable.foreach(tableInstance.table.columns, function(columnDef){
+        ZeroTable.foreach(tableInstance.table.columns, function(columnDef, i){
+
+
             if(columnDef.options.visible){
+                var isFirst = i === 0;
+                var isLast  = i === colsLength - 1;
 
                 // E:beforeDrawCell
                 tableInstance.tableEvent("beforeDrawCell", { "$table" : tableInstance.$table, "dataRow" : dataRow, "columnDef" : columnDef, "$row" : $row });
@@ -82,7 +87,9 @@ ZeroTable.Plugin.TableBodyMode.Table.prototype = {
                     "dataRow" : dataRow,
                     "columnDef" : columnDef,
                     "$row" : $row,
-                    "cell" : cell
+                    "cell" : cell,
+                    "isFirst": isFirst,
+                    "isLast" : isLast
                 });
 
                 $row.append(cell.$cell);

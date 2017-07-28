@@ -89,12 +89,14 @@
         box-sizing: border-box;
         position: relative; }
         .zt-wrapper .zt-table-header .zt-searchers .zt-header-col .zt-input-wrapper {
+          display: inline-block;
           position: absolute;
           top: 2px;
           bottom: 2px;
           left: 2px;
           right: 2px; }
           .zt-wrapper .zt-table-header .zt-searchers .zt-header-col .zt-input-wrapper input {
+            display: inline-block;
             box-sizing: border-box;
             width: 100%;
             height: 100%;
@@ -206,8 +208,18 @@
   cursor: pointer;
   position: relative; }
 
+.zt-for-selected-only {
+  display: none; }
+
+.zt-selected .zt-for-selected-only {
+  display: inline-block; }
+
+.zt-selected .zt-for-unselected-only {
+  display: none; }
+
 .zt-selected .zt-checkbox,
 .zt-checkbox.zt-active {
+  display: inline-block;
   background: #41860e; }
   .zt-selected .zt-checkbox:before,
   .zt-checkbox.zt-active:before {
@@ -229,6 +241,13 @@
   margin: 5px;
   border: 1px solid #DDD;
   padding: 3px; }
+
+.zt-only-for-selection {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  font-size: 0; }
 
 .zt-paginator {
   font-size: 10px; }

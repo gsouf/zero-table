@@ -121,9 +121,13 @@ ZeroTable.createPlugin({
                 i++;
             });
 
+            var colsLength = tableInstance.table.columns.length;
 
-            ZeroTable.foreach(tableInstance.table.columns, function(columnDef){
+            ZeroTable.foreach(tableInstance.table.columns, function(columnDef, i){
                 if(columnDef.options.visible){
+                    var isFirst = i === 0;
+                    var isLast  = i === colsLength - 1;
+
                     var title = columnDef.options.header;
                     if(title === null || title === false || title === undefined){
                         title = columnDef.options.name;
@@ -151,7 +155,14 @@ ZeroTable.createPlugin({
 
 
                     tableInstance.fire("afterDrawCell", [
-                        new ZeroTable.TableEvent(tableInstance, {"columnDef" : columnDef, "cell" : cell, "$row" : $row, "$table" : tableInstance.$table})
+                        new ZeroTable.TableEvent(tableInstance, {
+                            "columnDef" : columnDef,
+                            "cell" : cell,
+                            "$row" : $row,
+                            "$table" : tableInstance.$table,
+                            "isFirst": isFirst,
+                            "isLast" : isLast
+                        })
                     ]);
                     $row.append($row, $cell);
 

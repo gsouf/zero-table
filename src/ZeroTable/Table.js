@@ -24,7 +24,8 @@ ZeroTable.Table = function(options){
             "core.pagination",
             "core.selection",
             "core.loading",
-            "core.searchHeader"
+            "core.searchHeader",
+            "core.csv"
         ]
     }
 
