@@ -219,7 +219,6 @@
 
 .zt-selected .zt-checkbox,
 .zt-checkbox.zt-active {
-  display: inline-block;
   background: #41860e; }
   .zt-selected .zt-checkbox:before,
   .zt-checkbox.zt-active:before {
