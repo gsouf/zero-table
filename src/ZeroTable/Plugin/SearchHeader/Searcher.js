@@ -27,6 +27,8 @@ ZeroTable.Plugin.SearchHeader.Searcher.prototype = {
 
         this.__bindEvents($cloneElement);
 
+        this.__updateElements($cloneElement, this.value);
+
         return $cloneElement;
     },
 

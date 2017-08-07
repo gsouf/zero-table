@@ -96,7 +96,7 @@
           left: 2px;
           right: 2px; }
           .zt-wrapper .zt-table-header .zt-searchers .zt-header-col .zt-input-wrapper input {
-            display: inline-block;
+            display: inline;
             box-sizing: border-box;
             width: 100%;
             height: 100%;
@@ -124,7 +124,8 @@
               font-weight: 100;
               font-size: 11px; }
           .zt-wrapper .zt-table-header .zt-searchers .zt-header-col .zt-input-wrapper select {
-            width: 100%; }
+            width: 100%;
+            display: inline-block; }
     .zt-wrapper .zt-table-header .zt-header-col {
       vertical-align: middle;
       border: 1px solid #CBCBCB;
