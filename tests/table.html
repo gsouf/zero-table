@@ -91,6 +91,16 @@
                     searcher: 'string'
                 },
                 {
+                    name: "foo bar",
+                    searcher: 'string',
+                    content: 'foo',
+                    renderAsync: function(v, d, html, callback){
+                        setTimeout (function() {
+                            callback(html + ' bar');
+                        }, 1000);
+                    }
+                },
+                {
                     tooltip: 'click to say "foo"',
                     name: "say foo",
                     visible: true,

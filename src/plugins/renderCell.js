@@ -41,6 +41,13 @@ ZeroTable.createPlugin({
 
 
                 e.cell.$cell.html(value);
+
+                if (e.columnDef.options.renderAsync) {
+                    e.columnDef.options.renderAsync(e.dataRow[e.columnDef.getDataIndex()], e.dataRow, value, function(value){
+                        e.cell.$cell.html(value);
+                    })
+                }
+
             }
 
         }
